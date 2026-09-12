@@ -1,0 +1,209 @@
+---
+---
+
+<section id="tester" class="tester-section font-mono">
+  <div class="container">
+    <div class="tester-header">
+      <div class="header-tag">
+        <span class="text-magenta">[INTERACTIVE SANDBOX]</span>
+        <span class="text-muted">PRUEBA DE TIPOGRAFÍAS EN VIVO</span>
+      </div>
+      <h2 class="tester-title font-nucore">
+        PROBAR <span class="text-magenta">FUENTES OTF</span>
+      </h2>
+    </div>
+
+    <!-- Sandbox Card -->
+    <div class="tester-card">
+      <div class="controls-bar">
+        <!-- Font Selection Toggle -->
+        <div class="control-group">
+          <label>FUENTE:</label>
+          <select id="font-select" class="select-box font-mono">
+            <option value="font-nucore">1. NUCORE CONDENSED (behance-6856b8.otf)</option>
+            <option value="font-secondary">2. MARATHON SECONDARY (behance-684068.otf)</option>
+          </select>
+        </div>
+
+        <!-- Slider -->
+        <div class="control-group">
+          <label for="font-size-slider">TAMAÑO:</label>
+          <input type="range" id="font-size-slider" min="24" max="140" value="64" class="slider" />
+          <span id="font-size-val" class="text-magenta">64PX</span>
+        </div>
+
+        <div class="control-group">
+          <button id="toggle-color-btn" class="btn-toggle">
+            [ INVERTIR COLOR ]
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Editable Preview Area -->
+      <div id="preview-box" class="preview-area font-nucore" contenteditable="true" spellcheck="false">
+        ESSENTIALLY EVERYWHERE 2026
+      </div>
+
+      <div class="tester-footer">
+        <span>EDITABLE EN VIVO (HAZ CLIC Y ESCRIBE TU TEXTO)</span>
+        <span id="current-font-label" class="text-magenta">FUENTE ACTUAL: behance-6856b846f0def.otf</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Interactive Sandbox Controls
+  const slider = document.getElementById('font-size-slider') as HTMLInputElement;
+  const sizeVal = document.getElementById('font-size-val');
+  const preview = document.getElementById('preview-box');
+  const toggleBtn = document.getElementById('toggle-color-btn');
+  const fontSelect = document.getElementById('font-select') as HTMLSelectElement;
+  const fontLabel = document.getElementById('current-font-label');
+
+  if (slider && sizeVal && preview) {
+    slider.addEventListener('input', () => {
+      const size = slider.value + 'px';
+      preview.style.fontSize = size;
+      sizeVal.textContent = size.toUpperCase();
+    });
+  }
+
+  if (toggleBtn && preview) {
+    toggleBtn.addEventListener('click', () => {
+      preview.classList.toggle('inverted');
+    });
+  }
+
+  if (fontSelect && preview && fontLabel) {
+    fontSelect.addEventListener('change', () => {
+      if (fontSelect.value === 'font-secondary') {
+        preview.classList.remove('font-nucore');
+        preview.classList.add('font-secondary');
+        fontLabel.textContent = 'FUENTE ACTUAL: behance-684068111d7ae.otf';
+      } else {
+        preview.classList.remove('font-secondary');
+        preview.classList.add('font-nucore');
+        fontLabel.textContent = 'FUENTE ACTUAL: behance-6856b846f0def.otf';
+      }
+    });
+  }
+</script>
+
+<style>
+  .tester-section {
+    padding: 80px 0;
+    background-color: var(--bg-black);
+    border-bottom: 2px solid var(--border-magenta);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .tester-header {
+    margin-bottom: 32px;
+  }
+
+  .header-tag {
+    font-size: 0.8rem;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .text-magenta { color: var(--text-magenta); }
+  .text-muted { color: var(--text-muted); }
+
+  .tester-title {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+  }
+
+  .tester-card {
+    background-color: var(--bg-dark-panel);
+    border: 2px solid var(--border-magenta);
+  }
+
+  .controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: var(--bg-black);
+    border-bottom: 1px solid var(--border-dark);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .control-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+
+  .select-box {
+    background-color: var(--bg-dark-panel);
+    color: var(--text-white);
+    border: 1px solid var(--border-magenta);
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .slider {
+    accent-color: var(--bg-magenta);
+    cursor: pointer;
+  }
+
+  .btn-toggle {
+    background-color: var(--bg-magenta);
+    color: var(--text-black);
+    border: none;
+    padding: 8px 16px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .btn-toggle:hover {
+    background-color: var(--text-white);
+  }
+
+  .preview-area {
+    padding: 48px 24px;
+    min-height: 240px;
+    font-size: 64px;
+    line-height: 1.25;
+    color: var(--text-white);
+    background-color: var(--bg-dark-panel);
+    outline: none;
+    word-break: break-word;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .preview-area.inverted {
+    background-color: var(--bg-magenta);
+    color: var(--text-black);
+  }
+
+  .tester-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 24px;
+    background-color: var(--bg-black);
+    border-top: 1px solid var(--border-dark);
+    font-size: 0.75rem;
+  }
+
+  @media (max-width: 768px) {
+    .tester-footer {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+</style>

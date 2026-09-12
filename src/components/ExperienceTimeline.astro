@@ -1,0 +1,140 @@
+---
+const timeline = [
+  {
+    period: "2024 — GRADUATE",
+    role: "SOFTWARE ANALYSIS & DEVELOPMENT DEGREE",
+    company: "SENA (SERVICIO NACIONAL DE APRENDIZAJE)",
+    logo: "/sena-logo.png",
+    desc: "Graduated with formal degree in Software Analysis and Development. Specialized in software modeling, full stack web architecture, relational database design, and production deployment standards."
+  },
+  {
+    period: "LAST 6 MONTHS",
+    role: "FULL STACK ARCHITECT — LAMBDAIDX PLATFORM",
+    company: "CAPSTONE GRADUATION PROJECT",
+    desc: "Dedicated 6 months of intensive software development to engineering LambdaIDX: a modern hierarchical knowledge and wiki platform built with Next.js App Router, TypeScript, PostgreSQL, Prisma ORM, and Meilisearch."
+  }
+];
+---
+
+<section id="experience" class="exp-section font-mono">
+  <div class="container">
+    <div class="section-header">
+      <span class="text-magenta">// EDUCATION & EXPERIENCE</span>
+      <span class="text-muted">PROFESSIONAL ACTIVITY & FORMATION LOG</span>
+    </div>
+
+    <div class="timeline-list">
+      {timeline.map((item) => (
+        <div class="timeline-row">
+          <div class="row-period text-magenta font-bold">
+            {item.period}
+          </div>
+          <div class="row-content">
+            <h3 class="role-title font-nucore text-white">{item.role}</h3>
+            
+            <div class="company-badge font-mono">
+              {item.logo && (
+                <img src={item.logo} alt="SENA Logo" class="sena-logo-img" />
+              )}
+              <span class="company-tag text-muted">{item.company}</span>
+            </div>
+
+            <p class="role-desc font-body">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .exp-section {
+    padding: 100px 0;
+    background-color: var(--bg-black);
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-line);
+    margin-bottom: 60px;
+  }
+
+  .timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .timeline-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px dashed var(--border-line);
+  }
+
+  .timeline-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .row-period {
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .role-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .company-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .sena-logo-img {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .company-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    display: inline-block;
+  }
+
+  .role-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+
+  .text-magenta { color: var(--text-magenta); }
+  .text-white { color: var(--text-white); }
+  .text-muted { color: var(--text-muted); }
+  .font-bold { font-weight: 700; }
+
+  @media (max-width: 768px) {
+    .timeline-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+</style>

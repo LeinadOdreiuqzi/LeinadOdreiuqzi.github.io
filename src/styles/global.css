@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Chakra+Petch:wght@400;600;700&family=Inter:wght@400;500;700&display=swap');
+
+@font-face {
+  font-family: 'NuCoreCondensed';
+  src: url('/fonts/marathon-display.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MarathonSecondary';
+  src: url('/fonts/marathon-secondary.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Color System & Tokens */
+:root {
+  --color-magenta: #FF0052;
+  --color-dark: #080808;
+  --color-light: #ebe6e6;
+}
+
+/* Modo Oscuro (Default: #080808 Background, #FF0052 Primary Magenta) */
+:root, [data-theme="dark"] {
+  --bg-primary: #080808;
+  --bg-surface: #121214;
+  --bg-panel: #1A1A1D;
+  --bg-dark-panel: #1A1A1D;
+  --bg-opposite: #ebe6e6;
+
+  /* Tiles en Modo Oscuro (Ajedrez) */
+  --bg-magenta: #FF0052;
+  --text-black: #080808;
+  
+  --bg-black: #080808;         /* Fondo de los cuadros opuestos */
+  --text-white: #ebe6e6;       /* Texto en cuadros opuestos */
+  
+  --text-primary: #ebe6e6;
+  --text-opposite: #080808;
+  --text-magenta: #FF0052;     /* Color principal */
+  --text-muted: #8E94A0;
+  --text-dim: #555A64;
+  
+  --border-line: rgba(235, 230, 230, 0.15);
+  --border-dark: #222327;
+  --border-magenta: #FF0052;
+  
+  --font-nucore: 'NuCoreCondensed', 'Share Tech Mono', sans-serif;
+  --font-secondary: 'MarathonSecondary', 'Share Tech Mono', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Chakra Petch', sans-serif;
+}
+
+/* Modo Claro (#ebe6e6 Background, #FF0052 Primary Magenta) */
+[data-theme="light"] {
+  --bg-primary: #ebe6e6;
+  --bg-surface: #dfd9d9;
+  --bg-panel: #d5cfcf;
+  --bg-dark-panel: #d5cfcf;
+  --bg-opposite: #080808;
+  
+  /* Tiles en Modo Claro (Ajedrez): Magenta se mantiene #FF0052, la otra parte alterna a #ebe6e6 */
+  --bg-magenta: #FF0052;
+  --text-black: #080808;
+
+  --bg-black: #ebe6e6;         /* Alterna el negro por el blanco #ebe6e6 */
+  --text-white: #080808;       /* Texto oscuro para alto contraste sobre #ebe6e6 */
+
+  --text-primary: #080808;
+  --text-opposite: #ebe6e6;
+  --text-magenta: #FF0052;     /* Color principal */
+  --text-muted: #55555A;
+  --text-dim: #77777E;
+  
+  --border-line: rgba(8, 8, 8, 0.15);
+  --border-dark: #c4bcbc;
+  --border-magenta: #FF0052;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Checkerboard (Ajedrez) Utility Tile Classes */
+.theme-magenta {
+  background-color: var(--bg-magenta) !important;
+  color: var(--text-black) !important;
+}
+
+.theme-black, .theme-opposite {
+  background-color: var(--bg-black) !important;
+  color: var(--text-white) !important;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Typography Utility Classes */
+.font-nucore {
+  font-family: var(--font-nucore);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.text-magenta {
+  color: var(--text-magenta) !important;
+}
+
+.text-primary {
+  color: var(--text-primary) !important;
+}
+
+.text-white {
+  color: var(--text-white) !important;
+}
+
+.text-black {
+  color: var(--text-black) !important;
+}
+
+.text-muted {
+  color: var(--text-muted) !important;
+}
+
+.text-dim {
+  color: var(--text-dim) !important;
+}
+
+/* Micro-texture Background Overlay */
+.screen-texture {
+  background-image: radial-gradient(rgba(255, 0, 82, 0.08) 1px, transparent 0);
+  background-size: 12px 12px;
+}
+
+/* Industrial Action Buttons */
+.btn-action {
+  background-color: var(--text-magenta);
+  color: #080808;
+  border: none;
+  padding: 14px 28px;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-action:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.btn-action-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--text-primary);
+  padding: 14px 28px;
+}
+
+.btn-action-outline:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-magenta);
+}

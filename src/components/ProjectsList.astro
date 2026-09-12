@@ -1,0 +1,185 @@
+---
+const projects = [
+  {
+    num: "01",
+    title: "LAMBDAIDX PLATFORM",
+    subtitle: "HIERARCHICAL KNOWLEDGE & WIKI SYSTEM",
+    tech: ["NEXT.JS APP ROUTER", "TYPESCRIPT", "POSTGRESQL", "PRISMA", "MEILISEARCH"],
+    desc: "Production-grade corporate knowledge platform designed with hierarchical navigation, high-density reading UX, and an SEO-first architecture for thousands of indexable pages. Developed over 6 months as capstone software engineering project.",
+    github: "https://github.com/LeinadOdreiuqzi/LambdaIDX"
+  },
+  {
+    num: "02",
+    title: "ALBUMBEATS",
+    subtitle: "PERSONAL MUSIC BEATS REPOSITORY & SHOWCASE",
+    tech: ["ASTRO.JS", "TYPESCRIPT", "WEB AUDIO API", "VANILLA CSS"],
+    desc: "Interactive music beat catalog and streaming repository featuring original musical compositions, custom audio players, and responsive visual spec cards.",
+    github: "https://github.com/LeinadOdreiuqzi/AlbumBeats"
+  },
+  {
+    num: "03",
+    title: "HERBARIO",
+    subtitle: "PUBLIC BOTANICAL ARCHIVE FOR NATIVE SPECIES",
+    tech: ["NEXT.JS", "TYPESCRIPT", "POSTGRESQL", "TAILWINDCSS"],
+    desc: "Crowd-sourced botanical archive enabling users to upload, document, and categorize native plant and tree species for biodiversity tracking and public environmental preservation.",
+    github: "https://github.com/LeinadOdreiuqzi/Herbario"
+  }
+];
+---
+
+<section id="projects" class="projects-section">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header font-mono">
+      <span class="text-magenta">// FEATURED PROJECTS</span>
+      <span class="text-muted">SOFTWARE ENGINEERING SELECTION</span>
+    </div>
+
+    <!-- Editorial Projects List (No Card Containers) -->
+    <div class="projects-list">
+      {projects.map((proj) => (
+        <article class="project-entry">
+          <div class="proj-left font-mono">
+            <span class="proj-num text-magenta">PROJ // {proj.num}</span>
+            <div class="tech-tags">
+              {proj.tech.map((t) => (
+                <span class="tag-item">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="proj-right">
+            <h2 class="proj-title font-nucore">{proj.title}</h2>
+            <h3 class="proj-subtitle font-mono text-magenta">{proj.subtitle}</h3>
+            <p class="proj-desc font-body">{proj.desc}</p>
+
+            <div class="proj-links font-mono">
+              <a href={proj.github} target="_blank" rel="noopener noreferrer" class="btn-link">
+                <span>[ GITHUB REPOSITORY ]</span>
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: 100px 0;
+    background-color: var(--bg-black);
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-line);
+    margin-bottom: 60px;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+  }
+
+  /* Open Editorial Entry (No Div Box / No Card Border) */
+  .project-entry {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px dashed var(--border-line);
+  }
+
+  .project-entry:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .proj-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .proj-num {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .tag-item {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .proj-title {
+    font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-white);
+    margin-bottom: 8px;
+  }
+
+  .proj-subtitle {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+
+  .proj-desc {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    max-width: 760px;
+    margin-bottom: 32px;
+  }
+
+  .proj-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .btn-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s ease;
+  }
+
+  .btn-link:hover {
+    color: var(--text-magenta);
+  }
+
+  @media (max-width: 900px) {
+    .project-entry {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+</style>

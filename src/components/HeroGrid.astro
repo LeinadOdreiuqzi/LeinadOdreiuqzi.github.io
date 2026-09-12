@@ -1,0 +1,159 @@
+---
+---
+
+<section class="hero-grid">
+  <!-- Left Tile: Giant L E I N A D  O D R E I U Q Z I Layout (Magenta Theme) -->
+  <div class="grid-tile theme-magenta tile-left">
+    <div class="giant-letters font-nucore">
+      <div class="row"><span>L</span><span>E</span><span>I</span><span>N</span><span>A</span><span>D</span></div>
+      <div class="row"><span>O</span><span>D</span><span>R</span><span>E</span><span>I</span><span>U</span></div>
+      <div class="row"><span>Q</span><span>Z</span><span>I</span><span class="empty"></span><span>D</span><span>E</span></div>
+      <div class="row"><span>V</span><span class="empty"></span><span>E</span><span>L</span><span>O</span><span>P</span></div>
+    </div>
+  </div>
+
+  <!-- Right Tile: Full Stack Software Analyst & Developer (Black Theme) -->
+  <div class="grid-tile theme-black tile-right">
+    <!-- Top Metadata Block -->
+    <div class="tile-meta font-mono">
+      <p class="meta-desc">
+        LEINAD ODREIUQZI — SOFTWARE ANALYST & DEVELOPER.
+      </p>
+      <p class="meta-sub text-muted">
+        FULL STACK SPECIALIST IN FRONTEND & BACKEND ENGINEERING.
+      </p>
+      <div class="meta-footer">
+        <div>EDUCATION: SENA GRADUATE</div>
+        <div>CAPSTONE PROJECT: LAMBDAIDX PLATFORM</div>
+        <div class="text-magenta mt-2">AVAILABLE FOR ON-SITE & REMOTE ROLES</div>
+      </div>
+    </div>
+
+    <!-- Giant Title: FULL STACK SOFTWARE DEVELOPER -->
+    <div class="giant-headline font-nucore">
+      <div class="line">FULL</div>
+      <div class="line">STACK</div>
+      <div class="line">SOFTWARE</div>
+      <div class="line">DEVELOPER</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80vh;
+    border-bottom: none;
+  }
+
+  .grid-tile {
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Left Tile: Giant N U C O N D E N S E D */
+  .tile-left {
+    background-color: var(--bg-magenta);
+    color: var(--text-black);
+    justify-content: center;
+  }
+
+  .giant-letters {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    font-size: clamp(2.8rem, 5.5vw, 6rem);
+    font-weight: 700;
+    line-height: 1.3;
+    user-select: none;
+  }
+
+  .giant-letters .row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .giant-letters span {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+  }
+
+  .giant-letters .empty {
+    visibility: hidden;
+  }
+
+  /* Right Tile: ESSENTIALLY EVERYWHERE */
+  .tile-right {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    border-left: none;
+  }
+
+  .tile-meta {
+    font-size: 0.9rem;
+    max-width: 480px;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .meta-desc {
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+
+  .meta-sub {
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+  }
+
+  .meta-footer {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: none;
+    padding-top: 16px;
+  }
+
+  .mt-2 {
+    margin-top: 8px;
+    font-weight: 700;
+  }
+
+  .text-magenta {
+    color: var(--text-magenta);
+  }
+
+  .giant-headline {
+    font-size: clamp(2.5rem, 5vw, 5.5rem);
+    font-weight: 700;
+    color: var(--text-magenta);
+    line-height: 1.35;
+    letter-spacing: 0.05em;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .giant-headline .line {
+    display: block;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 992px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tile-right {
+      border-left: none;
+      border-top: none;
+    }
+  }
+</style>

@@ -1,0 +1,319 @@
+---
+interface Props {
+  title?: string;
+  numeral?: string;
+  serial?: string;
+}
+
+const {
+  title = "LambdaIDX Platform",
+  numeral = "01",
+  serial = "NC-SPECIMEN // LAMBDAIDX HIERARCHICAL KNOWLEDGE ARCHITECTURE"
+} = Astro.props;
+---
+
+<section class="nucaloric-layout font-mono">
+  <!-- Left Magenta Vertical Bar -->
+  <aside class="magenta-sidebar">
+    <div class="sidebar-top">
+      <div class="logo-mark font-nucore">N01</div>
+      <span class="vertical-text text-brand">Software Engineering Specimen</span>
+    </div>
+    
+    <div class="sidebar-bottom">
+      <span class="vertical-text text-sponsored">
+        <svg class="pixel-arrow arrow-left" width="14" height="18" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true">
+          <rect x="7" y="0" width="2" height="18"/>
+          <rect x="7" y="18" width="2" height="2"/>
+          <rect x="5" y="16" width="2" height="2"/>
+          <rect x="9" y="16" width="2" height="2"/>
+          <rect x="3" y="14" width="2" height="2"/>
+          <rect x="11" y="14" width="2" height="2"/>
+          <rect x="1" y="12" width="2" height="2"/>
+          <rect x="13" y="12" width="2" height="2"/>
+        </svg>
+        Sponsored message
+        <svg class="pixel-arrow arrow-left" width="14" height="18" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true">
+          <rect x="7" y="0" width="2" height="18"/>
+          <rect x="7" y="18" width="2" height="2"/>
+          <rect x="5" y="16" width="2" height="2"/>
+          <rect x="9" y="16" width="2" height="2"/>
+          <rect x="3" y="14" width="2" height="2"/>
+          <rect x="11" y="14" width="2" height="2"/>
+          <rect x="1" y="12" width="2" height="2"/>
+          <rect x="13" y="12" width="2" height="2"/>
+        </svg>
+      </span>
+    </div>
+  </aside>
+
+  <!-- Main Right Specimen Area -->
+  <div class="specimen-main">
+    <!-- Brand Title -->
+    <header class="specimen-header">
+      <h1 class="brand-title font-body">{title}</h1>
+    </header>
+
+    <!-- Giant Numerals Background (187) -->
+    <div class="giant-numeral font-nucore" aria-hidden="true">
+      {numeral}
+    </div>
+
+    <!-- Center Content Slot (Replaces the burger object) -->
+    <div class="center-content-area">
+      <div class="content-box">
+        <slot>
+          <!-- Default Specimen Content Slot -->
+          <div class="specimen-badge">
+            <span class="badge-tag">[SPECIMEN 187]</span>
+            <span class="badge-title font-nucore">HIGH DENSITY SYSTEM</span>
+          </div>
+
+          <div class="specimen-grid font-mono">
+            <div class="spec-col">
+              <span class="label">BATCH ID</span>
+              <span class="value text-magenta">NC-9940-AX</span>
+            </div>
+            <div class="spec-col">
+              <span class="label">SECTOR</span>
+              <span class="value">ALPHA 07</span>
+            </div>
+            <div class="spec-col">
+              <span class="label">STATUS</span>
+              <span class="value text-magenta">VERIFIED</span>
+            </div>
+          </div>
+        </slot>
+      </div>
+    </div>
+
+    <!-- Bottom Serial Code -->
+    <footer class="specimen-footer">
+      <span class="serial-code">{serial}</span>
+    </footer>
+  </div>
+</section>
+
+<style>
+  .nucaloric-layout {
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    min-height: 540px;
+    background-color: var(--bg-black);
+    border: none;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  /* Left Magenta Sidebar */
+  .magenta-sidebar {
+    background-color: var(--bg-magenta);
+    color: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px 0;
+    user-select: none;
+    border-right: none;
+  }
+
+  .sidebar-top, .sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .logo-mark {
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: #080808;
+    color: var(--bg-magenta);
+    padding: 6px 8px;
+    line-height: 1;
+  }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .text-brand {
+    color: #080808;
+    margin-top: 12px;
+  }
+
+  .text-sponsored {
+    color: #080808;
+    opacity: 0.9;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* CSS Rotation Utility Classes (Método 1) */
+  .pixel-arrow {
+    display: inline-block;
+    flex-shrink: 0;
+    transition: transform 0.15s ease;
+  }
+
+  .pixel-arrow.arrow-down  { transform: rotate(0deg); }
+  .pixel-arrow.arrow-up    { transform: rotate(180deg); }
+  .pixel-arrow.arrow-left  { transform: rotate(90deg); }
+  .pixel-arrow.arrow-right { transform: rotate(-90deg); }
+
+  /* Main Specimen Panel */
+  .specimen-main {
+    padding: 48px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-color: var(--bg-black);
+    color: var(--text-white);
+  }
+
+  .specimen-header {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .brand-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-white);
+    line-height: 1;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  /* Giant Magenta 187 Numeral (Positioned on the Right) */
+  .giant-numeral {
+    position: absolute;
+    top: 40px;
+    right: 60px;
+    left: auto;
+    font-size: clamp(8rem, 18vw, 16rem);
+    font-weight: 700;
+    color: var(--text-magenta);
+    line-height: 0.8;
+    user-select: none;
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+    opacity: 0.85;
+  }
+
+  /* Center Content Area (Shifted to the Right) */
+  .center-content-area {
+    z-index: 2;
+    position: relative;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    max-width: 720px;
+    width: 100%;
+    margin-left: auto;
+  }
+
+  .content-box {
+    background-color: var(--bg-dark-panel);
+    border: none;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .specimen-badge {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: none;
+    padding-bottom: 16px;
+  }
+
+  .badge-tag {
+    color: var(--text-magenta);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .badge-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  .specimen-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    font-size: 0.85rem;
+  }
+
+  .spec-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .label {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .value {
+    font-weight: 700;
+  }
+
+  /* Footer Monospace Serial (Right Aligned) */
+  .specimen-footer {
+    z-index: 2;
+    position: relative;
+    padding-top: 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .serial-code {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .nucaloric-layout {
+      grid-template-columns: 56px 1fr;
+    }
+
+    .specimen-main {
+      padding: 32px 24px;
+    }
+
+    .giant-numeral {
+      font-size: 12rem;
+      top: 60px;
+      left: 20px;
+    }
+
+    .center-content-area {
+      margin-top: 60px;
+    }
+
+    .specimen-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,177 @@
+---
+const stackCategories = [
+  {
+    code: "01",
+    category: "FRONTEND & CORE",
+    items: [
+      {
+        name: "Next.js & React",
+        desc: "App Router, Server Components, SSR, Dynamic Routing",
+      },
+      {
+        name: "Astro.js Framework",
+        desc: "Static Site Generation, Islands Architecture, High Performance",
+      },
+      { 
+        name: "TypeScript", 
+        desc: "Strict Type Safety, Interfaces, Modular Architecture" 
+      },
+      {
+        name: "Vanilla CSS & Modern Layouts",
+        desc: "Custom CSS Variables, Grid Architecture, Responsive Design",
+      },
+    ],
+  },
+  {
+    code: "02",
+    category: "BACKEND & DATABASES",
+    items: [
+      {
+        name: "PostgreSQL & Prisma ORM",
+        desc: "Relational Data Modeling, Schema Migrations, Indexes",
+      },
+      {
+        name: "Node.js & Route Handlers",
+        desc: "RESTful APIs, Async Processing, Server Actions",
+      },
+      {
+        name: "Meilisearch",
+        desc: "Fast Full-Text Search Engine Integration",
+      },
+      { 
+        name: "Authentication & Security", 
+        desc: "Role-Based Access Control, Session Management, Input Validation" 
+      },
+    ],
+  },
+  {
+    code: "03",
+    category: "TOOLS & INFRASTRUCTURE",
+    items: [
+      {
+        name: "Git & GitHub Workflow",
+        desc: "Version Control, Branch Management, Continuous Collaboration",
+      },
+      {
+        name: "Vercel Platform",
+        desc: "Production Deployments, Edge Functions, Continuous Integration",
+      },
+      {
+        name: "Figma",
+        desc: "UI/UX Layout Systems, Wireframing, Graphic Art Direction",
+      },
+      {
+        name: "Software Analysis",
+        desc: "SENA Graduation Standard, Requirements Modeling, Documentation",
+      },
+    ],
+  },
+];
+---
+
+<section id="stack" class="stack-section font-mono">
+  <div class="container">
+    <div class="section-header">
+      <span class="text-magenta">// TECHNICAL STACK & CAPABILITIES</span>
+      <span class="text-muted font-mono">SOFTWARE ENGINEERING MATRIX</span>
+    </div>
+
+    <div class="stack-grid">
+      {
+        stackCategories.map((cat) => (
+          <div class="stack-col">
+            <div class="col-head font-nucore">
+              <span class="text-magenta">{cat.code}</span> {cat.category}
+            </div>
+
+            <div class="items-list">
+              {cat.items.map((item) => (
+                <div class="item-row">
+                  <span class="item-name text-white font-bold">
+                    {item.name}
+                  </span>
+                  <span class="item-desc text-muted">{item.desc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-section {
+    padding: 100px 0;
+    background-color: var(--bg-black);
+    border-bottom: 2px solid var(--border-line);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--border-line);
+    margin-bottom: 60px;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 48px;
+  }
+
+  .col-head {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--text-magenta);
+    margin-bottom: 24px;
+    color: var(--text-black);
+  }
+
+  .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .item-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--border-dark);
+  }
+
+  .item-name {
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+  }
+
+  .item-desc {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .text-magenta {
+    color: var(--text-magenta);
+  }
+  .text-black {
+    color: var(--text-black);
+  }
+  .text-muted {
+    color: var(--text-muted);
+  }
+  .font-bold {
+    font-weight: 700;
+  }
+</style>

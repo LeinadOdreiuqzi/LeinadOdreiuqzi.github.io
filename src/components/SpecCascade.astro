@@ -1,0 +1,215 @@
+---
+---
+
+<section id="projects" class="cascade-grid">
+  <!-- Left Tile: Technical Project Specs for LambdaIDX (Black Theme) -->
+  <div class="grid-tile theme-black">
+    <div class="metrics-container font-mono">
+      <div class="project-tag text-magenta font-bold">
+        PROJ // 01 — CAPSTONE PROJECT
+      </div>
+
+      <h2 class="project-title font-nucore">
+        LAMBDAIDX PLATFORM
+      </h2>
+
+      <p class="project-subtitle text-magenta font-bold">
+        HIERARCHICAL KNOWLEDGE & WIKI SYSTEM
+      </p>
+
+      <p class="project-desc">
+        Production-grade corporate knowledge platform designed with hierarchical navigation, high-density reading UX, and an SEO-first architecture for thousands of indexable pages. Developed over 6 months as capstone software engineering project.
+      </p>
+
+      <!-- Tech Stack Badges -->
+      <div class="tech-spec-box">
+        <div class="box-title text-magenta">[TECHNOLOGY STACK]</div>
+        <div class="box-row">
+          <span>NEXT.JS APP ROUTER</span>
+          <span>TYPESCRIPT</span>
+        </div>
+        <div class="box-row">
+          <span>POSTGRESQL + PRISMA</span>
+          <span>MEILISEARCH</span>
+        </div>
+      </div>
+
+      <div class="project-action">
+        <a href="https://github.com/LeinadOdreiuqzi/LambdaIDX" target="_blank" rel="noopener noreferrer" class="btn-link">
+          <span>[ GITHUB REPOSITORY ]</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Section Label Bottom Right -->
+    <div class="section-tag font-mono">
+      <span>FEATURED SELECTION // 01</span>
+    </div>
+  </div>
+
+  <!-- Right Tile: Stacked LAMBDAIDX Cascade (Magenta Theme) -->
+  <div class="grid-tile theme-magenta">
+    <div class="nucore-cascade font-nucore">
+      <div class="cascade-line opacity-100">LAMBDAIDX</div>
+      <div class="cascade-line opacity-80">LAMBDAIDX</div>
+      <div class="cascade-line opacity-60">LAMBDAIDX</div>
+      <div class="cascade-line opacity-40">LAMBDAIDX</div>
+      <div class="cascade-line opacity-30">LAMBDAIDX</div>
+      <div class="cascade-line opacity-20">LAMBDAIDX</div>
+      <div class="cascade-line opacity-10">LAMBDAIDX</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cascade-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    border-bottom: none;
+  }
+
+  .grid-tile {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  /* Right Cascade (Magenta) */
+  .theme-magenta {
+    background-color: var(--bg-magenta);
+    color: var(--text-black);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .nucore-cascade {
+    font-size: clamp(2.2rem, 4.2vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.15;
+    text-align: center;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .opacity-100 { opacity: 1; }
+  .opacity-80  { opacity: 0.8; }
+  .opacity-60  { opacity: 0.6; }
+  .opacity-40  { opacity: 0.4; }
+  .opacity-30  { opacity: 0.3; }
+  .opacity-20  { opacity: 0.2; }
+  .opacity-10  { opacity: 0.1; }
+
+  /* Left Specs (Black) */
+  .theme-black {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    border-left: none;
+  }
+
+  .metrics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 480px;
+  }
+
+  .project-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .project-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--text-white);
+    margin-top: 4px;
+  }
+
+  .project-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .text-magenta {
+    color: var(--text-magenta);
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .tech-spec-box {
+    margin-top: 12px;
+    background-color: var(--bg-dark-panel);
+    border: none;
+    padding: 16px;
+  }
+
+  .box-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .box-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .project-action {
+    margin-top: 8px;
+  }
+
+  .btn-link {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s ease;
+  }
+
+  .btn-link:hover {
+    color: var(--text-magenta);
+  }
+
+  .section-tag {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: auto;
+    padding-top: 24px;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 992px) {
+    .cascade-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .theme-black {
+      border-left: none;
+      border-top: none;
+    }
+  }
+</style>

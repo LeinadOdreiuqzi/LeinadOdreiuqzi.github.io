@@ -1,0 +1,188 @@
+---
+---
+
+<header class="portfolio-header font-mono">
+  <div class="container">
+    <div class="header-inner">
+      <!-- Developer Brand Identity -->
+      <a href="#" class="brand-link">
+        <span class="brand-box">LEINAD ODREIUQZI</span>
+        <span class="brand-sub">// SOFTWARE ANALYST & DEVELOPER</span>
+      </a>
+
+      <!-- Open Navigation Links -->
+      <nav class="nav-links">
+        <a href="#projects" class="nav-item">
+          <span class="nav-num text-magenta">01</span>
+          <span>PROJECTS</span>
+        </a>
+        <a href="#stack" class="nav-item">
+          <span class="nav-num text-magenta">02</span>
+          <span>STACK</span>
+        </a>
+        <a href="#experience" class="nav-item">
+          <span class="nav-num text-magenta">03</span>
+          <span>EXPERIENCE</span>
+        </a>
+        <a href="#contact" class="nav-item">
+          <span class="nav-num text-magenta">04</span>
+          <span>CONTACT</span>
+        </a>
+      </nav>
+
+      <!-- Theme Switcher & Status Badge -->
+      <div class="controls-right">
+        <!-- Theme Toggle Button -->
+        <button id="theme-toggle" class="btn-theme-toggle font-mono" aria-label="Toggle dark/light mode">
+          <span class="text-magenta">THEME:</span>
+          <span id="theme-text">DARK</span>
+        </button>
+
+        <div class="status-tag hidden-mobile">
+          <span class="dot-active">●</span>
+          <span>ON-SITE & REMOTE</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Client-side Dark (#080808) / Light (#ebe6e6) Theme Toggle with LocalStorage
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeText = document.getElementById('theme-text');
+
+  function updateThemeUI(theme: string) {
+    if (themeText) {
+      themeText.textContent = theme === 'light' ? 'LIGHT' : 'DARK';
+    }
+  }
+
+  // Read current theme state
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  updateThemeUI(currentTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const activeTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = activeTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeUI(newTheme);
+    });
+  }
+</script>
+
+<style>
+  .portfolio-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-primary);
+    border-bottom: none;
+    padding: 16px 0;
+    transition: background-color 0.25s ease;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+  }
+
+  .brand-box {
+    background-color: var(--text-magenta);
+    color: #080808;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 4px 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .brand-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+  }
+
+  .nav-item {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    transition: color 0.15s ease;
+  }
+
+  .nav-item:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-num {
+    font-size: 0.75rem;
+  }
+
+  .controls-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .btn-theme-toggle {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: none;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .btn-theme-toggle:hover {
+    border-color: var(--text-magenta);
+  }
+
+  .status-tag {
+    font-size: 0.8rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot-active {
+    color: var(--text-magenta);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links, .brand-sub, .hidden-mobile {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,314 @@
+---
+const techStack = [
+  { name: "NEXT.JS", category: "FRONTEND" },
+  { name: "ASTRO.JS", category: "FRONTEND" },
+  { name: "TYPESCRIPT", category: "LANGUAGE" },
+  { name: "CSS / VANILLA", category: "STYLING" },
+  { name: "GIT", category: "TOOL" },
+  { name: "VERCEL", category: "INFRA" },
+  { name: "FIGMA", category: "DESIGN" },
+  { name: "POSTGRESQL", category: "DATABASE" },
+  { name: "PRISMA", category: "ORM" }
+];
+---
+
+<section id="stack" class="matrix-section font-mono">
+  <!-- Row 1: Tech Stack Overview (Black Left, Magenta Right) -->
+  <div class="matrix-row">
+    <!-- Left Specs -->
+    <div class="grid-tile theme-black">
+      <div class="matrix-specs">
+        <div class="section-tag text-magenta font-bold">
+          SYSTEM // 04 — TECH STACK & TOOLS
+        </div>
+        <h2 class="section-title font-nucore text-white">
+          TECHNOLOGY MATRIX
+        </h2>
+
+        <div class="spec-item">
+          <span class="text-muted">PRIMARY FRONTEND</span>
+          <span class="text-magenta font-bold">NEXT.JS / ASTRO.JS</span>
+        </div>
+        <div class="spec-item">
+          <span class="text-muted">CORE LANGUAGES</span>
+          <span>TYPESCRIPT, JAVASCRIPT, CSS</span>
+        </div>
+        <div class="spec-item">
+          <span class="text-muted">TOOLS & INFRASTRUCTURE</span>
+          <span class="text-magenta">GIT, VERCEL, FIGMA</span>
+        </div>
+        <div class="spec-item">
+          <span class="text-muted">DATABASE & ORM</span>
+          <span>POSTGRESQL + PRISMA</span>
+        </div>
+      </div>
+
+      <div class="section-tag-bottom">
+        <span>CORE COMPETENCIES</span>
+      </div>
+    </div>
+
+    <!-- Right Tech Stack Grid -->
+    <div class="grid-tile theme-magenta">
+      <div class="tech-grid font-nucore">
+        {techStack.map((tech) => (
+          <div class="tech-cell">
+            <span class="tech-name">{tech.name}</span>
+            <span class="tech-cat font-mono">{tech.category}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: SENA Education & ADSO Degree (Magenta Left, Black Right) -->
+  <div id="experience" class="matrix-row">
+    <!-- Left Education Tile with SENA Logo -->
+    <div class="grid-tile theme-magenta">
+      <div class="sena-education-content">
+        <div class="sena-logo-wrapper">
+          <img src="/sena-logo.png" alt="SENA Logo" class="sena-logo-img" />
+        </div>
+        
+        <div class="edu-tag text-black font-bold">
+          EDUCATION & CREDENTIALS
+        </div>
+
+        <h2 class="edu-title font-nucore text-black">
+          SENA GRADUATE
+        </h2>
+
+        <p class="edu-degree font-mono text-black font-bold">
+          TECHNOLOGIST IN SOFTWARE ANALYSIS & DEVELOPMENT (ADSO)
+        </p>
+      </div>
+
+      <div class="section-tag-dark">
+        <span>OFFICIAL ACADEMIC CREDENTIAL</span>
+      </div>
+    </div>
+
+    <!-- Right Capstone & Career Specs -->
+    <div class="grid-tile theme-black">
+      <div class="matrix-specs">
+        <div class="section-tag text-magenta font-bold">
+          CAPSTONE & EXPERIENCE HIGHLIGHT
+        </div>
+
+        <h3 class="capstone-title font-nucore text-white">
+          6-MONTH SOFTWARE CAPSTONE
+        </h3>
+
+        <p class="capstone-desc text-muted font-body">
+          Engineered LambdaIDX Platform over a intensive 6-month capstone period to complete graduation requirements as Software Developer. Mastered full-stack development, database architecture, and SEO design.
+        </p>
+
+        <div class="spec-item">
+          <span class="text-muted">INSTITUTION</span>
+          <span class="text-white font-bold">SENA COLOMBIA</span>
+        </div>
+        <div class="spec-item">
+          <span class="text-muted">ACADEMIC STATUS</span>
+          <span class="text-magenta">GRADUATED & VERIFIED</span>
+        </div>
+        <div class="spec-item">
+          <span class="text-muted">WORK AVAILABILITY</span>
+          <span class="text-magenta">ON-SITE & REMOTE</span>
+        </div>
+      </div>
+
+      <div class="section-tag-bottom">
+        <span>EXPERIENCE RECORD</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .matrix-section {
+    display: flex;
+    flex-direction: column;
+    border-bottom: none;
+  }
+
+  .matrix-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+    border-bottom: none;
+  }
+
+  .grid-tile {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .theme-black {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+  }
+
+  .theme-magenta {
+    background-color: var(--bg-magenta);
+    color: var(--text-black);
+  }
+
+  .matrix-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 440px;
+    font-size: 0.85rem;
+  }
+
+  .section-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed var(--border-line);
+  }
+
+  .text-magenta { color: var(--text-magenta); }
+  .text-white { color: var(--text-white); }
+  .text-black { color: var(--text-black); }
+  .text-muted { color: var(--text-muted); }
+  .font-bold { font-weight: 700; }
+
+  .section-tag-bottom {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 24px;
+    letter-spacing: 0.1em;
+    text-align: right;
+  }
+
+  .section-tag-dark {
+    font-size: 0.75rem;
+    color: var(--text-black);
+    margin-top: auto;
+    padding-top: 24px;
+    letter-spacing: 0.1em;
+    text-align: right;
+    font-weight: 700;
+  }
+
+  /* Tech Grid */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    align-content: center;
+    height: 100%;
+  }
+
+  .tech-cell {
+    background-color: rgba(8, 8, 8, 0.12);
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    border: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .tech-cell:hover {
+    background-color: rgba(8, 8, 8, 0.22);
+  }
+
+  .tech-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-black);
+    line-height: 1.2;
+  }
+
+  .tech-cat {
+    font-size: 0.65rem;
+    color: rgba(8, 8, 8, 0.7);
+    letter-spacing: 0.05em;
+    font-weight: 700;
+  }
+
+  /* SENA Education Section */
+  .sena-education-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 440px;
+  }
+
+  .sena-logo-wrapper {
+    width: 80px;
+    height: 80px;
+    background-color: var(--bg-black);
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .sena-logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .edu-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .edu-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  .edu-degree {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .capstone-title {
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+
+  .capstone-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 992px) {
+    .matrix-row {
+      grid-template-columns: 1fr;
+    }
+
+    .tech-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,238 @@
+---
+---
+
+<section class="blueprint-grid font-mono">
+  <!-- Left Tile: Project 02 ALBUMBEATS (Magenta Theme) -->
+  <div class="grid-tile theme-magenta">
+    <div class="project-card-inner">
+      <div class="project-tag text-black font-bold">
+        PROJ // 02 — MUSIC CATALOG
+      </div>
+
+      <h2 class="project-title font-nucore">
+        ALBUMBEATS
+      </h2>
+
+      <p class="project-subtitle text-black font-bold">
+        PERSONAL MUSIC BEATS REPOSITORY & SHOWCASE
+      </p>
+
+      <p class="project-desc text-black">
+        Interactive music beat catalog and streaming repository featuring original musical compositions, custom audio players, and responsive visual spec cards.
+      </p>
+
+      <div class="tech-spec-box magenta-box">
+        <div class="box-title text-black">[STACK & AUDIO ENGINE]</div>
+        <div class="box-row text-black">
+          <span>ASTRO.JS + TYPESCRIPT</span>
+          <span>WEB AUDIO API</span>
+        </div>
+        <div class="box-row text-black">
+          <span>VANILLA CSS</span>
+          <span>SPEC CARDS</span>
+        </div>
+      </div>
+
+      <div class="project-action">
+        <a href="https://github.com/LeinadOdreiuqzi/AlbumBeats" target="_blank" rel="noopener noreferrer" class="btn-link-dark">
+          <span>[ GITHUB REPOSITORY ]</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-tag-dark">
+      <span>FEATURED SELECTION // 02</span>
+    </div>
+  </div>
+
+  <!-- Right Tile: Project 03 HERBARIO (Black Theme) -->
+  <div class="grid-tile theme-black">
+    <div class="project-card-inner">
+      <div class="project-tag text-magenta font-bold">
+        PROJ // 03 — BOTANICAL ARCHIVE
+      </div>
+
+      <h2 class="project-title font-nucore text-white">
+        HERBARIO
+      </h2>
+
+      <p class="project-subtitle text-magenta font-bold">
+        PUBLIC BOTANICAL ARCHIVE FOR NATIVE SPECIES
+      </p>
+
+      <p class="project-desc text-muted">
+        Crowd-sourced botanical archive enabling users to upload, document, and categorize native plant and tree species for biodiversity tracking and public environmental preservation.
+      </p>
+
+      <div class="tech-spec-box black-box">
+        <div class="box-title text-magenta">[DATA & CLASSIFICATION]</div>
+        <div class="box-row text-muted">
+          <span>NEXT.JS + TYPESCRIPT</span>
+          <span>POSTGRESQL</span>
+        </div>
+        <div class="box-row text-muted">
+          <span>TAILWINDCSS</span>
+          <span>PUBLIC API</span>
+        </div>
+      </div>
+
+      <div class="project-action">
+        <a href="https://github.com/LeinadOdreiuqzi/Herbario" target="_blank" rel="noopener noreferrer" class="btn-link-light">
+          <span>[ GITHUB REPOSITORY ]</span>
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section-tag-light">
+      <span>FEATURED SELECTION // 03</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .blueprint-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+    border-bottom: none;
+  }
+
+  .grid-tile {
+    padding: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .project-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 480px;
+  }
+
+  .project-tag {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .project-title {
+    font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+
+  .project-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .text-magenta { color: var(--text-magenta); }
+  .text-white { color: var(--text-white); }
+  .text-black { color: var(--text-black); }
+  .text-muted { color: var(--text-muted); }
+  .font-bold { font-weight: 700; }
+
+  /* Left Tile: Magenta */
+  .theme-magenta {
+    background-color: var(--bg-magenta);
+    color: var(--text-black);
+  }
+
+  .magenta-box {
+    margin-top: 12px;
+    background-color: rgba(8, 8, 8, 0.12);
+    padding: 16px;
+    border: none;
+  }
+
+  .btn-link-dark {
+    color: var(--text-black);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.15s ease;
+  }
+
+  .btn-link-dark:hover {
+    opacity: 0.75;
+  }
+
+  .section-tag-dark {
+    font-size: 0.75rem;
+    color: var(--text-black);
+    text-align: right;
+    margin-top: auto;
+    padding-top: 24px;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+  }
+
+  /* Right Tile: Black */
+  .theme-black {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+  }
+
+  .black-box {
+    margin-top: 12px;
+    background-color: var(--bg-dark-panel);
+    padding: 16px;
+    border: none;
+  }
+
+  .box-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .box-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+  }
+
+  .btn-link-light {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.15s ease;
+  }
+
+  .btn-link-light:hover {
+    color: var(--text-magenta);
+  }
+
+  .section-tag-light {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    margin-top: auto;
+    padding-top: 24px;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 992px) {
+    .blueprint-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
