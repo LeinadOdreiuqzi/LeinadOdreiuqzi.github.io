@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: 'NuCoreCondensed';
-  src: url('/fonts/marathon-display.otf') format('opentype');
+  src: url('/fonts/behance-6856b846f0def.otf') format('opentype'),
+       url('/fonts/marathon-display.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -10,7 +11,8 @@
 
 @font-face {
   font-family: 'MarathonSecondary';
-  src: url('/fonts/marathon-secondary.otf') format('opentype');
+  src: url('/fonts/behance-684068111d7ae.otf') format('opentype'),
+       url('/fonts/marathon-secondary.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
