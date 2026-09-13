@@ -40,15 +40,19 @@ const {
           <div class="specimen-grid font-mono">
             <div class="spec-col">
               <span class="label">MUSIC SHOWCASE</span>
-              <span class="value text-magenta">ALBUMBEATS</span>
+              <a href="https://github.com/LeinadOdreiuqzi/AlbumBeats" target="_blank" rel="noopener noreferrer" class="value text-magenta spec-link">
+                ALBUMBEATS ↗
+              </a>
             </div>
             <div class="spec-col">
               <span class="label">BOTANICAL ARCHIVE</span>
-              <span class="value">HERBARIO</span>
+              <a href="https://github.com/LeinadOdreiuqzi/Herbario" target="_blank" rel="noopener noreferrer" class="value text-magenta spec-link">
+                HERBARIO ↗
+              </a>
             </div>
             <div class="spec-col">
               <span class="label">LICENSE</span>
-              <span class="value text-magenta">OPEN SOURCE</span>
+              <span class="value">OPEN SOURCE</span>
             </div>
           </div>
 
@@ -299,6 +303,16 @@ const {
 
   .value {
     font-weight: 700;
+  }
+
+  .spec-link {
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+
+  .spec-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
   }
 
   /* Dynamic AlbumBeats Preview Frame */
