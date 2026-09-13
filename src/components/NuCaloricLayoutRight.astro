@@ -51,6 +51,24 @@ const {
               <span class="value text-magenta">OPEN SOURCE</span>
             </div>
           </div>
+
+          <!-- Dynamic AlbumBeats UI Preview Container -->
+          <div class="lambdaidx-preview-container">
+            <div class="preview-header font-mono">
+              <span class="text-magenta font-bold">// UI SNAPSHOT</span>
+              <span class="text-muted">BEATS SHOWCASE INTERFACE</span>
+            </div>
+
+            <div class="preview-frame">
+              <a href="https://github.com/LeinadOdreiuqzi/AlbumBeats" target="_blank" rel="noopener noreferrer" class="preview-link">
+                <img
+                  src="/albumbeats-preview.png"
+                  alt="AlbumBeats Music Showcase UI Preview"
+                  class="lambdaidx-img"
+                />
+              </a>
+            </div>
+          </div>
         </slot>
       </div>
     </div>
@@ -281,6 +299,42 @@ const {
 
   .value {
     font-weight: 700;
+  }
+
+  /* Dynamic AlbumBeats Preview Frame */
+  .lambdaidx-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+    border-top: 1px dashed var(--border-line);
+    padding-top: 16px;
+  }
+
+  .preview-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+  }
+
+  .preview-frame {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--border-line);
+    background-color: var(--bg-black);
+  }
+
+  .preview-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+  }
+
+  .lambdaidx-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
   }
 
   /* Footer Monospace Serial (Left Aligned) */
