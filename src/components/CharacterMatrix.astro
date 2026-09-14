@@ -1,14 +1,17 @@
 ---
 const techStack = [
-  { name: "NEXT.JS", category: "FRONTEND" },
-  { name: "ASTRO.JS", category: "FRONTEND" },
-  { name: "TYPESCRIPT", category: "LANGUAGE" },
-  { name: "CSS / VANILLA", category: "STYLING" },
-  { name: "GIT", category: "TOOL" },
-  { name: "VERCEL", category: "INFRA" },
-  { name: "FIGMA", category: "DESIGN" },
-  { name: "POSTGRESQL", category: "DATABASE" },
-  { name: "PRISMA", category: "ORM" }
+  { name: "NEXT.JS", category: "FRONTEND", iconUrl: "https://cdn.simpleicons.org/nextdotjs/000000" },
+  { name: "ASTRO.JS", category: "FRONTEND", iconUrl: "https://cdn.simpleicons.org/astro/000000" },
+  { name: "TYPESCRIPT", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/typescript/000000" },
+  { name: "JAVASCRIPT", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/javascript/000000" },
+  { name: "PYTHON", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/python/000000" },
+  { name: "REACT", category: "LIBRARY", iconUrl: "https://cdn.simpleicons.org/react/000000" },
+  { name: "LUA", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/lua/000000" },
+  { name: "TAILWIND", category: "STYLING", iconUrl: "https://cdn.simpleicons.org/tailwindcss/000000" },
+  { name: "POSTGRESQL", category: "DATABASE", iconUrl: "https://cdn.simpleicons.org/postgresql/000000" },
+  { name: "PRISMA", category: "ORM", iconUrl: "https://cdn.simpleicons.org/prisma/000000" },
+  { name: "GIT / GITHUB", category: "TOOL", iconUrl: "https://cdn.simpleicons.org/github/000000" },
+  { name: "VERCEL", category: "INFRA", iconUrl: "https://cdn.simpleicons.org/vercel/000000" }
 ];
 ---
 
@@ -31,7 +34,7 @@ const techStack = [
         </div>
         <div class="spec-item">
           <span class="text-muted">CORE LANGUAGES</span>
-          <span>TYPESCRIPT, JAVASCRIPT, CSS</span>
+          <span>TYPESCRIPT, JAVASCRIPT, PYTHON</span>
         </div>
         <div class="spec-item">
           <span class="text-muted">TOOLS & INFRASTRUCTURE</span>
@@ -53,6 +56,15 @@ const techStack = [
       <div class="tech-grid font-nucore">
         {techStack.map((tech) => (
           <div class="tech-cell">
+            <div class="tech-watermark">
+              <img
+                src={tech.iconUrl}
+                alt=""
+                aria-hidden="true"
+                class="tech-icon-img"
+                loading="lazy"
+              />
+            </div>
             <span class="tech-name">{tech.name}</span>
             <span class="tech-cat font-mono">{tech.category}</span>
           </div>
@@ -244,8 +256,10 @@ const techStack = [
   }
 
   .tech-cell {
+    position: relative;
+    overflow: hidden;
     background-color: rgba(8, 8, 8, 0.12);
-    padding: 20px 12px;
+    padding: 24px 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -253,21 +267,53 @@ const techStack = [
     gap: 6px;
     text-align: center;
     border: none;
-    transition: background-color 0.15s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
   }
 
   .tech-cell:hover {
     background-color: rgba(8, 8, 8, 0.22);
   }
 
+  .tech-watermark {
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+    width: 68px;
+    height: 68px;
+    opacity: 0.12;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tech-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0);
+  }
+
+  .tech-cell:hover .tech-watermark {
+    opacity: 0.28;
+    transform: scale(1.15) rotate(-5deg);
+  }
+
   .tech-name {
-    font-size: 1.1rem;
+    position: relative;
+    z-index: 2;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text-black);
     line-height: 1.2;
   }
 
   .tech-cat {
+    position: relative;
+    z-index: 2;
     font-size: 0.65rem;
     color: rgba(8, 8, 8, 0.7);
     letter-spacing: 0.05em;
