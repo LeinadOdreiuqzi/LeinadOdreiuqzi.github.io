@@ -1,17 +1,65 @@
 ---
 const techStack = [
-  { name: "NEXT.JS", category: "FRONTEND", iconUrl: "https://cdn.simpleicons.org/nextdotjs/000000" },
-  { name: "ASTRO.JS", category: "FRONTEND", iconUrl: "https://cdn.simpleicons.org/astro/000000" },
-  { name: "TYPESCRIPT", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/typescript/000000" },
-  { name: "JAVASCRIPT", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/javascript/000000" },
-  { name: "PYTHON", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/python/000000" },
-  { name: "REACT", category: "LIBRARY", iconUrl: "https://cdn.simpleicons.org/react/000000" },
-  { name: "LUA", category: "LANGUAGE", iconUrl: "https://cdn.simpleicons.org/lua/000000" },
-  { name: "TAILWIND", category: "STYLING", iconUrl: "https://cdn.simpleicons.org/tailwindcss/000000" },
-  { name: "POSTGRESQL", category: "DATABASE", iconUrl: "https://cdn.simpleicons.org/postgresql/000000" },
-  { name: "PRISMA", category: "ORM", iconUrl: "https://cdn.simpleicons.org/prisma/000000" },
-  { name: "GIT / GITHUB", category: "TOOL", iconUrl: "https://cdn.simpleicons.org/github/000000" },
-  { name: "VERCEL", category: "INFRA", iconUrl: "https://cdn.simpleicons.org/vercel/000000" }
+  {
+    name: "NEXT.JS",
+    category: "FRONTEND",
+    iconUrl: "https://cdn.simpleicons.org/nextdotjs/000000",
+  },
+  {
+    name: "ASTRO.JS",
+    category: "FRONTEND",
+    iconUrl: "https://cdn.simpleicons.org/astro/000000",
+  },
+  {
+    name: "TYPESCRIPT",
+    category: "LANGUAGE",
+    iconUrl: "https://cdn.simpleicons.org/typescript/000000",
+  },
+  {
+    name: "JAVASCRIPT",
+    category: "LANGUAGE",
+    iconUrl: "https://cdn.simpleicons.org/javascript/000000",
+  },
+  {
+    name: "PYTHON",
+    category: "LANGUAGE",
+    iconUrl: "https://cdn.simpleicons.org/python/000000",
+  },
+  {
+    name: "REACT",
+    category: "LIBRARY",
+    iconUrl: "https://cdn.simpleicons.org/react/000000",
+  },
+  {
+    name: "LUA",
+    category: "LANGUAGE",
+    iconUrl: "https://cdn.simpleicons.org/lua/000000",
+  },
+  {
+    name: "TAILWIND",
+    category: "STYLING",
+    iconUrl: "https://cdn.simpleicons.org/tailwindcss/000000",
+  },
+  {
+    name: "POSTGRESQL",
+    category: "DATABASE",
+    iconUrl: "https://cdn.simpleicons.org/postgresql/000000",
+  },
+  {
+    name: "PRISMA",
+    category: "ORM",
+    iconUrl: "https://cdn.simpleicons.org/prisma/000000",
+  },
+  {
+    name: "GIT / GITHUB",
+    category: "TOOL",
+    iconUrl: "https://cdn.simpleicons.org/github/000000",
+  },
+  {
+    name: "VERCEL",
+    category: "INFRA",
+    iconUrl: "https://cdn.simpleicons.org/vercel/000000",
+  },
 ];
 ---
 
@@ -24,9 +72,7 @@ const techStack = [
         <div class="section-tag text-magenta font-bold">
           SYSTEM // 04 — TECH STACK & TOOLS
         </div>
-        <h2 class="section-title font-nucore text-white">
-          TECHNOLOGY MATRIX
-        </h2>
+        <h2 class="section-title font-nucore text-white">TECHNOLOGY MATRIX</h2>
 
         <div class="spec-item">
           <span class="text-muted">PRIMARY FRONTEND</span>
@@ -54,21 +100,23 @@ const techStack = [
     <!-- Right Tech Stack Grid -->
     <div class="grid-tile theme-magenta">
       <div class="tech-grid font-nucore">
-        {techStack.map((tech) => (
-          <div class="tech-cell">
-            <div class="tech-watermark">
-              <img
-                src={tech.iconUrl}
-                alt=""
-                aria-hidden="true"
-                class="tech-icon-img"
-                loading="lazy"
-              />
+        {
+          techStack.map((tech) => (
+            <div class="tech-cell">
+              <div class="tech-watermark">
+                <img
+                  src={tech.iconUrl}
+                  alt=""
+                  aria-hidden="true"
+                  class="tech-icon-img"
+                  loading="lazy"
+                />
+              </div>
+              <span class="tech-name">{tech.name}</span>
+              <span class="tech-cat font-mono">{tech.category}</span>
             </div>
-            <span class="tech-name">{tech.name}</span>
-            <span class="tech-cat font-mono">{tech.category}</span>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </div>
@@ -78,19 +126,26 @@ const techStack = [
     <!-- Left Education Tile with SENA Logo -->
     <div class="grid-tile theme-magenta">
       <div class="sena-education-content">
-        <div class="edu-tag text-black font-bold">
-          EDUCATION & CREDENTIALS
-        </div>
+        <div class="edu-tag text-black font-bold">EDUCATION & CREDENTIALS</div>
 
         <div class="credentials-list">
           <!-- SENA Credential Card -->
           <div class="sena-badge-card">
             <div class="sena-logo-wrapper">
-              <img src="/sena-logo.png" alt="SENA Logo" class="sena-badge-img" />
+              <img
+                src="/sena-logo.png"
+                alt="SENA Logo"
+                class="sena-badge-img"
+              />
             </div>
             <div class="sena-badge-text font-mono text-black">
               <div class="badge-title font-bold">SENA COLOMBIA</div>
-              <div class="badge-sub font-bold">TECHNOLOGIST IN SOFTWARE ANALYSIS & DEVELOPMENT (ADSO)</div>
+              <div class="badge-sub font-bold">
+                TECHNOLOGIST IN SOFTWARE ANALYSIS & DEVELOPMENT (ADSO)
+              </div>
+              <div class="badge-course font-bold">
+                // PYTHON DATA VISUALIZATION
+              </div>
             </div>
           </div>
 
@@ -135,12 +190,16 @@ const techStack = [
         </h3>
 
         <p class="capstone-desc text-muted font-body">
-          2.5 years of software engineering experience, including 6 dedicated months developing the main LambdaIDX capstone platform to complete SENA graduation requirements as Software Developer.
+          2.5 years of software engineering experience, including 6 dedicated
+          months developing the main LambdaIDX capstone platform to complete
+          SENA graduation requirements as Software Developer.
         </p>
 
         <div class="spec-item">
           <span class="text-muted">TOTAL EXPERIENCE</span>
-          <span class="text-white font-bold">2.5 YEARS (INCL. 6-MO CAPSTONE)</span>
+          <span class="text-white font-bold"
+            >2.5 YEARS (INCL. 6-MO CAPSTONE)</span
+          >
         </div>
         <div class="spec-item">
           <span class="text-muted">INSTITUTION</span>
@@ -221,11 +280,21 @@ const techStack = [
     border-bottom: 1px dashed var(--border-line);
   }
 
-  .text-magenta { color: var(--text-magenta); }
-  .text-white { color: var(--text-white); }
-  .text-black { color: var(--text-black); }
-  .text-muted { color: var(--text-muted); }
-  .font-bold { font-weight: 700; }
+  .text-magenta {
+    color: var(--text-magenta);
+  }
+  .text-white {
+    color: var(--text-white);
+  }
+  .text-black {
+    color: var(--text-black);
+  }
+  .text-muted {
+    color: var(--text-muted);
+  }
+  .font-bold {
+    font-weight: 700;
+  }
 
   .section-tag-bottom {
     font-size: 0.75rem;
@@ -267,7 +336,9 @@ const techStack = [
     gap: 6px;
     text-align: center;
     border: none;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease;
   }
 
   .tech-cell:hover {
@@ -282,7 +353,9 @@ const techStack = [
     height: 68px;
     opacity: 0.12;
     pointer-events: none;
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -375,7 +448,9 @@ const techStack = [
   }
 
   .credly-logo-link {
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    transition:
+      transform 0.15s ease,
+      opacity 0.15s ease;
   }
 
   .credly-logo-link:hover {
@@ -399,6 +474,13 @@ const techStack = [
   .badge-sub {
     font-size: 0.75rem;
     opacity: 0.95;
+  }
+
+  .badge-course {
+    font-size: 0.7rem;
+    opacity: 0.85;
+    margin-top: 2px;
+    letter-spacing: 0.02em;
   }
 
   .capstone-title {
