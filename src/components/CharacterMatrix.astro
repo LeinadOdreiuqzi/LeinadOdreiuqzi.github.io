@@ -66,24 +66,23 @@ const techStack = [
     <!-- Left Education Tile with SENA Logo -->
     <div class="grid-tile theme-magenta">
       <div class="sena-education-content">
-        <div class="sena-logo-wrapper">
-          <img src="/sena-logo.png" alt="SENA Logo" class="sena-logo-img" />
-        </div>
-        
         <div class="edu-tag text-black font-bold">
           EDUCATION & CREDENTIALS
         </div>
 
-        <h2 class="edu-title font-nucore text-black">
-          SENA GRADUATE
-        </h2>
+        <div class="credentials-list">
+          <!-- SENA Credential Card -->
+          <div class="sena-badge-card">
+            <div class="sena-logo-wrapper">
+              <img src="/sena-logo.png" alt="SENA Logo" class="sena-badge-img" />
+            </div>
+            <div class="sena-badge-text font-mono text-black">
+              <div class="badge-title font-bold">SENA COLOMBIA</div>
+              <div class="badge-sub font-bold">TECHNOLOGIST IN SOFTWARE ANALYSIS & DEVELOPMENT (ADSO)</div>
+            </div>
+          </div>
 
-        <p class="edu-degree font-mono text-black font-bold">
-          TECHNOLOGIST IN SOFTWARE ANALYSIS & DEVELOPMENT (ADSO)
-        </p>
-
-        <!-- Cisco Python Credly Verified Badge -->
-        <div class="credly-badge-wrapper">
+          <!-- Cisco Python Credly Verified Badge -->
           <div class="credly-badge-card">
             <a
               href="https://www.credly.com/badges/9968e0b6-606f-4bf4-8508-4668eb122081/linked_in_profile"
@@ -275,26 +274,12 @@ const techStack = [
     font-weight: 700;
   }
 
-  /* SENA Education Section */
+  /* Education & Credentials Section */
   .sena-education-content {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    max-width: 440px;
-  }
-
-  .sena-logo-wrapper {
-    display: inline-block;
-    margin-bottom: 8px;
-    background: transparent;
-    padding: 0;
-  }
-
-  .sena-logo-img {
-    height: 72px;
-    width: auto;
-    object-fit: contain;
-    filter: brightness(0);
+    max-width: 480px;
   }
 
   .edu-tag {
@@ -302,41 +287,38 @@ const techStack = [
     letter-spacing: 0.1em;
   }
 
-  .edu-title {
-    font-size: clamp(2.2rem, 3.8vw, 3.8rem);
-    font-weight: 700;
-    line-height: 1.1;
+  .credentials-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 4px;
   }
 
-  .edu-degree {
-    font-size: 0.9rem;
-    line-height: 1.5;
-  }
-
-  /* Credly Verified Certification Badge Container (Unbordered, Logo Link Only) */
-  .credly-badge-wrapper {
-    margin-top: 12px;
-    width: 100%;
-  }
-
+  .sena-badge-card,
   .credly-badge-card {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 16px;
     background-color: transparent;
     border: none;
     padding: 0;
   }
 
+  .sena-logo-wrapper,
   .credly-logo-link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
     flex-shrink: 0;
-    transition: transform 0.15s ease, opacity 0.15s ease;
   }
 
-  .credly-logo-link:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+  .sena-badge-img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    filter: brightness(0);
   }
 
   .credly-badge-img {
@@ -346,21 +328,31 @@ const techStack = [
     display: block;
   }
 
+  .credly-logo-link {
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .credly-logo-link:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+
+  .sena-badge-text,
   .credly-badge-text {
     font-size: 0.72rem;
-    line-height: 1.3;
+    line-height: 1.35;
     display: flex;
     flex-direction: column;
   }
 
-  .credly-badge-text .badge-title {
-    font-size: 0.75rem;
+  .badge-title {
+    font-size: 0.82rem;
     letter-spacing: 0.04em;
   }
 
-  .credly-badge-text .badge-sub {
-    font-size: 0.7rem;
-    opacity: 0.9;
+  .badge-sub {
+    font-size: 0.75rem;
+    opacity: 0.95;
   }
 
   .capstone-title {
