@@ -1,14 +1,61 @@
 ---
+
 ---
 
 <section class="hero-grid">
-  <!-- Left Tile: Giant L E I N A D  O D R E I U Q Z I Layout (Magenta Theme) -->
+  <!-- Left Tile: Round Visor Emblem Icon (Magenta Theme) -->
   <div class="grid-tile theme-magenta tile-left">
-    <div class="giant-letters font-nucore">
-      <div class="row"><span>L</span><span>E</span><span>I</span><span>N</span><span>A</span><span>D</span></div>
-      <div class="row"><span>O</span><span>D</span><span>R</span><span>E</span><span>I</span><span>U</span></div>
-      <div class="row"><span>Q</span><span>Z</span><span>I</span><span class="empty"></span><span>D</span><span>E</span></div>
-      <div class="row"><span>V</span><span class="empty"></span><span>E</span><span>L</span><span>O</span><span>P</span></div>
+    <div class="visor-badge-wrapper">
+      <div class="visor-icon">
+        <svg
+          viewBox="0 0 400 400"
+          class="round-visor-svg"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <!-- Strict Circle Mask for Spherical Perimeter Letter Trimming -->
+            <clipPath id="badge-circle-clip">
+              <circle cx="200" cy="200" r="180"></circle>
+            </clipPath>
+
+            <!-- Spherical Arc Path for Giant Distorted Base Text -->
+            <path id="visor-line-3" d="M -70,222 Q 200,432 470,222"></path>
+
+            <!-- Deep Visor Aperture Cutout Shape -->
+            <clipPath id="visor-window-clip">
+              <path d="M -60,-35 Q 200,115 460,-35 L 460,380 Q 200,555 -60,380 Z"></path>
+            </clipPath>
+          </defs>
+
+          <!-- Outer Circular Background Badge (Clean matte black) -->
+          <circle cx="200" cy="200" r="190" fill="#0D0D0E"></circle>
+
+          <!-- Inner Content STRICTLY Clipped inside Circle Perimeter (Spherical Edge Trimming) -->
+          <g clip-path="url(#badge-circle-clip)">
+            <!-- Inner Uniform Matte Black Backdrop -->
+            <rect x="0" y="0" width="400" height="400" fill="#0D0D0E"></rect>
+
+            <!-- Visor Curve Cutout Zone -->
+            <g clip-path="url(#visor-window-clip)">
+              <!-- Visor Arch Surface -->
+              <rect x="0" y="0" width="400" height="400" fill="#0D0D0E"></rect>
+
+              <!-- Single Giant LEINAD Text (Bottom Base - 176px) -->
+              <text
+                font-family="var(--font-nucore)"
+                font-weight="900"
+                font-size="176"
+                fill="#FF5500"
+                letter-spacing="0.14em"
+              >
+                <textPath href="#visor-line-3" startOffset="50%" text-anchor="middle">
+                  LEINAD
+                </textPath>
+              </text>
+            </g>
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 
@@ -16,17 +63,18 @@
   <div class="grid-tile theme-black tile-right">
     <!-- Top Metadata Block -->
     <div class="tile-meta font-mono">
-      <p class="meta-desc">
-        LEINAD ODREIUQZI — SOFTWARE ANALYST & DEVELOPER.
-      </p>
+      <p class="meta-desc">LEINAD ODREIUQZI — SOFTWARE ANALYST & DEVELOPER.</p>
       <p class="meta-sub text-muted">
-        2.5 YEARS OF SOFTWARE ENGINEERING EXPERIENCE. SPECIALIST IN FRONTEND & BACKEND ARCHITECTURE.
+        2.5 YEARS OF SOFTWARE ENGINEERING EXPERIENCE. SPECIALIST IN FRONTEND &
+        BACKEND ARCHITECTURE.
       </p>
       <div class="meta-footer">
         <div>EXPERIENCE: 2.5 YEARS (INCL. 6-MONTH MAIN CAPSTONE)</div>
         <div>EDUCATION: SENA GRADUATE (ADSO)</div>
         <div>CAPSTONE PROJECT: LAMBDAIDX PLATFORM</div>
-        <div class="text-magenta mt-2">AVAILABLE FOR ON-SITE & REMOTE ROLES</div>
+        <div class="text-magenta mt-2">
+          AVAILABLE FOR ON-SITE & REMOTE ROLES
+        </div>
       </div>
     </div>
 
@@ -57,36 +105,46 @@
     overflow: hidden;
   }
 
-  /* Left Tile: Giant N U C O N D E N S E D */
+  /* Left Tile: Motorcycle Visor Graphic */
   .tile-left {
     background-color: var(--bg-magenta);
     color: var(--text-black);
     justify-content: center;
+    align-items: center;
+    padding: 48px 36px;
   }
 
-  .giant-letters {
+  .visor-badge-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 36px;
-    font-size: clamp(2.8rem, 5.5vw, 6rem);
-    font-weight: 700;
-    line-height: 1.3;
-    user-select: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    gap: 20px;
   }
 
-  .giant-letters .row {
+  .visor-icon {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
-  .giant-letters span {
-    display: inline-block;
-    width: 1em;
-    text-align: center;
+  .round-visor-svg {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    max-height: 360px;
+    filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.45));
+    transition:
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.35s ease;
   }
 
-  .giant-letters .empty {
-    visibility: hidden;
+  .visor-badge-wrapper:hover .round-visor-svg {
+    transform: translateY(-6px) scale(1.04) rotate(3deg);
+    filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.55));
   }
 
   /* Right Tile: ESSENTIALLY EVERYWHERE */
