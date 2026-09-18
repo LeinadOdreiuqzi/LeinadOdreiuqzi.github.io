@@ -43,8 +43,8 @@
   --text-primary: #ebe6e6;
   --text-opposite: #080808;
   --text-magenta: #FF0052;     /* Color principal */
-  --text-muted: #8E94A0;
-  --text-dim: #555A64;
+  --text-muted: #9AA0AC;
+  --text-dim: #828894;
   
   --border-line: rgba(235, 230, 230, 0.15);
   --border-dark: #222327;
@@ -74,8 +74,8 @@
   --text-primary: #080808;
   --text-opposite: #ebe6e6;
   --text-magenta: #FF0052;     /* Color principal */
-  --text-muted: #55555A;
-  --text-dim: #77777E;
+  --text-muted: #4B4D54;
+  --text-dim: #60636C;
   
   --border-line: rgba(8, 8, 8, 0.15);
   --border-dark: #c4bcbc;
@@ -94,10 +94,50 @@ html, body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  line-height: 1.5;
+  line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Accessibility Focus & Utility Styles */
+:focus-visible {
+  outline: 3px solid var(--text-magenta) !important;
+  outline-offset: 3px !important;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 16px;
+  background-color: var(--text-magenta);
+  color: #080808 !important;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 12px 20px;
+  z-index: 9999;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 3px solid var(--text-primary) !important;
+  outline-offset: 3px !important;
 }
 
 /* Checkerboard (Ajedrez) Utility Tile Classes */

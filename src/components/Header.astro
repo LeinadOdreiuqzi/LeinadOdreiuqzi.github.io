@@ -11,7 +11,7 @@
       </a>
 
       <!-- Open Navigation Links -->
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Navegación principal">
         <a href="#projects" class="nav-item">
           <span class="nav-num text-magenta">01</span>
           <span>PROJECTS</span>
@@ -33,13 +33,13 @@
       <!-- Theme Switcher & Status Badge -->
       <div class="controls-right">
         <!-- Theme Toggle Button -->
-        <button id="theme-toggle" class="btn-theme-toggle font-mono" aria-label="Toggle dark/light mode">
+        <button id="theme-toggle" class="btn-theme-toggle font-mono" aria-label="Cambiar a tema claro o oscuro" aria-pressed="false">
           <span class="text-magenta">THEME:</span>
           <span id="theme-text">DARK</span>
         </button>
 
         <div class="status-tag hidden-mobile">
-          <span class="dot-active">●</span>
+          <span class="dot-active" aria-hidden="true">●</span>
           <span>ON-SITE & REMOTE</span>
         </div>
       </div>
@@ -55,6 +55,10 @@
   function updateThemeUI(theme: string) {
     if (themeText) {
       themeText.textContent = theme === 'light' ? 'LIGHT' : 'DARK';
+    }
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+      themeToggle.setAttribute('aria-label', theme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro');
     }
   }
 
