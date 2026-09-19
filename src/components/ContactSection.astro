@@ -18,10 +18,21 @@
       </p>
 
       <div class="contact-methods">
-        <a href="mailto:sherdanialex159357@gmail.com" class="contact-row" aria-label="Enviar correo directo a sherdanialex159357@gmail.com">
-          <span class="row-label text-muted">DIRECT EMAIL</span>
-          <span class="row-value text-magenta font-bold">SHERDANIALEX159357@GMAIL.COM</span>
-        </a>
+        <button
+          type="button"
+          id="copy-email-btn"
+          class="contact-row copy-trigger font-mono"
+          aria-label="Copiar correo sherdanialex159357@gmail.com al portapapeles"
+        >
+          <div class="row-top">
+            <span class="row-label text-muted">DIRECT EMAIL</span>
+            <span class="copy-badge" id="copy-badge">[ CLICK TO COPY ]</span>
+          </div>
+          <span class="row-value text-magenta font-bold" id="email-text">
+            SHERDANIALEX159357@GMAIL.COM
+          </span>
+          <span id="copy-live-alert" class="sr-only" aria-live="polite"></span>
+        </button>
 
         <a href="https://github.com/LeinadOdreiuqzi" target="_blank" rel="noopener noreferrer" class="contact-row" aria-label="Perfil de GitHub de Leinad Odreiuqzi (se abre en ventana nueva)">
           <span class="row-label text-muted">GITHUB PROFILE</span>
@@ -59,13 +70,6 @@
       <p class="cta-desc text-black font-mono">
         LET'S CONNECT AND DEVELOP HIGH-PERFORMANCE SOLUTIONS.
       </p>
-
-      <div class="cta-action">
-        <a href="mailto:sherdanialex159357@gmail.com" class="btn-email-cta font-mono">
-          <span>[ SEND EMAIL DIRECTLY ]</span>
-          <span>→</span>
-        </a>
-      </div>
     </div>
 
     <div class="section-tag-dark">
@@ -73,6 +77,123 @@
     </div>
   </div>
 </section>
+
+<script>
+  class TextScrambler {
+    el: HTMLElement;
+    chars: string;
+    queue: Array<{ from: string; to: string; start: number; end: number; char?: string }>;
+    frame: number;
+    frameRequest: number;
+    resolve: () => void;
+
+    constructor(el: HTMLElement) {
+      this.el = el;
+      this.chars = '!<>-_\\/[]{}—=+*^?#_$%&~0123456789';
+      this.queue = [];
+      this.frame = 0;
+      this.frameRequest = 0;
+      this.resolve = () => {};
+      this.update = this.update.bind(this);
+    }
+
+    setText(newText: string): Promise<void> {
+      const oldText = this.el.innerText;
+      const length = Math.max(oldText.length, newText.length);
+      const promise = new Promise<void>((resolve) => {
+        this.resolve = () => resolve();
+      });
+      this.queue = [];
+      for (let i = 0; i < length; i++) {
+        const from = oldText[i] || '';
+        const to = newText[i] || '';
+        const start = Math.floor(Math.random() * 10);
+        const end = start + Math.floor(Math.random() * 14) + 6;
+        this.queue.push({ from, to, start, end });
+      }
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+
+    update() {
+      let output = '';
+      let complete = 0;
+      for (let i = 0, n = this.queue.length; i < n; i++) {
+        let item = this.queue[i];
+        if (this.frame >= item.end) {
+          complete++;
+          output += item.to;
+        } else if (this.frame >= item.start) {
+          if (!item.char || Math.random() < 0.28) {
+            item.char = this.chars[Math.floor(Math.random() * this.chars.length)];
+          }
+          output += item.char;
+        } else {
+          output += item.from;
+        }
+      }
+      this.el.innerText = output;
+      if (complete === this.queue.length) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+  }
+
+  const copyBtn = document.getElementById('copy-email-btn');
+  const emailTextEl = document.getElementById('email-text');
+  const copyBadge = document.getElementById('copy-badge');
+  const liveAlert = document.getElementById('copy-live-alert');
+
+  if (copyBtn && emailTextEl && copyBadge) {
+    const originalEmail = 'SHERDANIALEX159357@GMAIL.COM';
+    const copiedMessage = '[ COPIED TO CLIPBOARD // OK ]';
+    const scrambler = new TextScrambler(emailTextEl);
+    let isCopying = false;
+    let resetTimer: ReturnType<typeof setTimeout> | null = null;
+
+    copyBtn.addEventListener('click', async () => {
+      if (isCopying) return;
+      isCopying = true;
+
+      try {
+        await navigator.clipboard.writeText('sherdanialex159357@gmail.com');
+      } catch (err) {
+        // Fallback for non-https/iframe contexts
+        const textarea = document.createElement('textarea');
+        textarea.value = 'sherdanialex159357@gmail.com';
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      }
+
+      if (liveAlert) {
+        liveAlert.textContent = 'Correo copiado al portapapeles con éxito.';
+      }
+
+      copyBtn.classList.add('is-copied');
+      copyBadge.textContent = '[ OK // 200 ]';
+
+      // Scramble into copied notification
+      await scrambler.setText(copiedMessage);
+
+      if (resetTimer) clearTimeout(resetTimer);
+      resetTimer = setTimeout(async () => {
+        await scrambler.setText(originalEmail);
+        copyBtn.classList.remove('is-copied');
+        copyBadge.textContent = '[ CLICK TO COPY ]';
+        isCopying = false;
+      }, 2500);
+    });
+  }
+</script>
 
 <style>
   .contact-grid {
@@ -141,6 +262,49 @@
     transition: opacity 0.15s ease;
   }
 
+  .copy-trigger {
+    background: transparent;
+    border: none;
+    border-bottom: 1px dashed var(--border-line);
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    color: inherit;
+    font-family: inherit;
+    padding: 0 0 10px 0;
+  }
+
+  .copy-trigger:hover {
+    opacity: 0.95;
+  }
+
+  .row-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .copy-badge {
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    transition: color 0.15s ease;
+  }
+
+  .copy-trigger:hover .copy-badge {
+    color: var(--text-magenta);
+  }
+
+  .copy-trigger.is-copied .copy-badge {
+    color: var(--text-magenta) !important;
+    font-weight: 700;
+  }
+
+  .copy-trigger.is-copied .row-value {
+    color: var(--text-primary) !important;
+  }
+
   .contact-row:hover {
     opacity: 0.85;
   }
@@ -207,27 +371,6 @@
     font-weight: 700;
   }
 
-  .cta-action {
-    margin-top: 16px;
-  }
-
-  .btn-email-cta, .btn-email-cta:visited {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background-color: var(--bg-black) !important;
-    color: var(--text-white) !important;
-    padding: 16px 24px;
-    text-decoration: none !important;
-    font-size: 0.9rem;
-    font-weight: 700;
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-
-  .btn-email-cta:hover {
-    background-color: #1a1a1a !important;
-    color: var(--text-magenta) !important;
-  }
 
   @media (max-width: 992px) {
     .contact-grid {
