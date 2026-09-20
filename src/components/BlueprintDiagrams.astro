@@ -159,19 +159,31 @@
     border: none;
   }
 
+  .project-action {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
   .btn-link-dark {
     color: var(--text-black);
+    background-color: rgba(8, 8, 8, 0.14);
+    border: 1px solid rgba(8, 8, 8, 0.3);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: opacity 0.15s ease;
+    min-height: 44px;
+    padding: 10px 16px;
+    transition: background-color 0.15s ease, opacity 0.15s ease;
   }
 
   .btn-link-dark:hover {
-    opacity: 0.75;
+    background-color: rgba(8, 8, 8, 0.25);
+    opacity: 1;
   }
 
   .section-tag-dark {
@@ -206,23 +218,30 @@
   .box-row {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
     font-size: 0.75rem;
     margin-bottom: 6px;
   }
 
   .btn-link-light {
     color: var(--text-white);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-line);
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 700;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: color 0.15s ease;
+    min-height: 44px;
+    padding: 10px 16px;
+    transition: color 0.15s ease, border-color 0.15s ease;
   }
 
   .btn-link-light:hover {
     color: var(--text-magenta);
+    border-color: var(--text-magenta);
   }
 
   .section-tag-light {
@@ -237,6 +256,27 @@
   @media (max-width: 992px) {
     .blueprint-grid {
       grid-template-columns: 1fr;
+    }
+
+    .grid-tile {
+      padding: 40px 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid-tile {
+      padding: 32px 18px;
+    }
+
+    .project-action {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-link-dark,
+    .btn-link-light {
+      width: 100%;
+      justify-content: space-between;
     }
   }
 </style>

@@ -5,12 +5,12 @@
   <div class="container">
     <div class="header-inner">
       <!-- Developer Brand Identity -->
-      <a href="#" class="brand-link">
+      <a href="#" class="brand-link" aria-label="Leinad Odreiuqzi - Inicio">
         <span class="brand-box">LEINAD ODREIUQZI</span>
         <span class="brand-sub">// SOFTWARE ANALYST & DEVELOPER</span>
       </a>
 
-      <!-- Open Navigation Links -->
+      <!-- Desktop Navigation Links -->
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#projects" class="nav-item">
           <span class="nav-num text-magenta">01</span>
@@ -30,9 +30,9 @@
         </a>
       </nav>
 
-      <!-- Theme Switcher & Status Badge -->
+      <!-- Theme Switcher, Mobile Menu Trigger & Status Badge -->
       <div class="controls-right">
-        <!-- Theme Toggle Button -->
+        <!-- Theme Toggle Button (WCAG 44px min touch target) -->
         <button id="theme-toggle" class="btn-theme-toggle font-mono" aria-label="Cambiar a tema claro o oscuro" aria-pressed="false">
           <span class="text-magenta">THEME:</span>
           <span id="theme-text">DARK</span>
@@ -42,6 +42,73 @@
           <span class="dot-active" aria-hidden="true">●</span>
           <span>ON-SITE & REMOTE</span>
         </div>
+
+        <!-- Mobile Menu Trigger (WCAG 44px min touch target) -->
+        <button
+          id="mobile-menu-btn"
+          class="btn-mobile-menu font-mono"
+          aria-expanded="false"
+          aria-controls="mobile-nav-drawer"
+          aria-label="Abrir menú de navegación"
+        >
+          <span class="text-magenta">[</span>
+          <span id="menu-btn-text">MENU // 00</span>
+          <span class="text-magenta">]</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Drawer Overlay (Marathon Aesthetic) -->
+  <div id="mobile-nav-drawer" class="mobile-drawer font-mono" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <span class="brand-box">LEINAD ODREIUQZI</span>
+        <span class="drawer-sys-tag text-magenta font-bold">DIRECTORY // 00</span>
+      </div>
+      <button id="close-menu-btn" class="btn-drawer-close font-mono" aria-label="Cerrar menú de navegación">
+        [ CLOSE // X ]
+      </button>
+    </div>
+
+    <nav class="drawer-nav" aria-label="Navegación móvil">
+      <a href="#projects" class="drawer-item">
+        <div class="drawer-item-left">
+          <span class="drawer-num text-magenta font-bold">01</span>
+          <span class="drawer-label font-nucore">PROJECTS & ARCHIVE</span>
+        </div>
+        <span class="drawer-arrow text-magenta" aria-hidden="true">→</span>
+      </a>
+      <a href="#stack" class="drawer-item">
+        <div class="drawer-item-left">
+          <span class="drawer-num text-magenta font-bold">02</span>
+          <span class="drawer-label font-nucore">TECH MATRIX & TOOLS</span>
+        </div>
+        <span class="drawer-arrow text-magenta" aria-hidden="true">→</span>
+      </a>
+      <a href="#experience" class="drawer-item">
+        <div class="drawer-item-left">
+          <span class="drawer-num text-magenta font-bold">03</span>
+          <span class="drawer-label font-nucore">EXPERIENCE & CREDENTIALS</span>
+        </div>
+        <span class="drawer-arrow text-magenta" aria-hidden="true">→</span>
+      </a>
+      <a href="#contact" class="drawer-item">
+        <div class="drawer-item-left">
+          <span class="drawer-num text-magenta font-bold">04</span>
+          <span class="drawer-label font-nucore">CONTACT & NETWORK</span>
+        </div>
+        <span class="drawer-arrow text-magenta" aria-hidden="true">→</span>
+      </a>
+    </nav>
+
+    <div class="drawer-footer">
+      <div class="drawer-status">
+        <span class="dot-active" aria-hidden="true">●</span>
+        <span>STATUS: AVAILABLE ON-SITE & REMOTE</span>
+      </div>
+      <div class="drawer-meta text-muted">
+        <span>LEINAD ODREIUQZI // SOFTWARE ANALYST & DEVELOPER 2026</span>
       </div>
     </div>
   </div>
@@ -76,6 +143,59 @@
       updateThemeUI(newTheme);
     });
   }
+
+  // Mobile Drawer Toggle Logic
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const closeMenuBtn = document.getElementById('close-menu-btn');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const menuBtnText = document.getElementById('menu-btn-text');
+  const drawerLinks = document.querySelectorAll('.drawer-item');
+
+  function openMenu() {
+    if (!mobileNavDrawer || !mobileMenuBtn) return;
+    mobileNavDrawer.classList.add('is-open');
+    mobileNavDrawer.setAttribute('aria-hidden', 'false');
+    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    mobileMenuBtn.setAttribute('aria-label', 'Cerrar menú de navegación');
+    if (menuBtnText) menuBtnText.textContent = 'CLOSE // X';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    if (!mobileNavDrawer || !mobileMenuBtn) return;
+    mobileNavDrawer.classList.remove('is-open');
+    mobileNavDrawer.setAttribute('aria-hidden', 'true');
+    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    mobileMenuBtn.setAttribute('aria-label', 'Abrir menú de navegación');
+    if (menuBtnText) menuBtnText.textContent = 'MENU // 00';
+    document.body.style.overflow = '';
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      const isOpen = mobileNavDrawer?.classList.contains('is-open');
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
+
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', closeMenu);
+  }
+
+  drawerLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNavDrawer?.classList.contains('is-open')) {
+      closeMenu();
+      mobileMenuBtn?.focus();
+    }
+  });
 </script>
 
 <style>
@@ -84,8 +204,8 @@
     top: 0;
     z-index: 100;
     background-color: var(--bg-primary);
-    border-bottom: none;
-    padding: 16px 0;
+    border-bottom: 1px solid var(--border-line);
+    padding: 12px 0;
     transition: background-color 0.25s ease;
   }
 
@@ -137,6 +257,8 @@
     gap: 8px;
     font-weight: 700;
     transition: color 0.15s ease;
+    min-height: 44px;
+    padding: 0 4px;
   }
 
   .nav-item:hover {
@@ -150,24 +272,44 @@
   .controls-right {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 
   .btn-theme-toggle {
     background-color: var(--bg-surface);
     color: var(--text-primary);
-    border: none;
-    padding: 6px 14px;
+    border: 1px solid var(--border-line);
+    padding: 10px 14px;
     font-size: 0.8rem;
     font-weight: 700;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    min-height: 44px;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
 
   .btn-theme-toggle:hover {
+    border-color: var(--text-magenta);
+  }
+
+  .btn-mobile-menu {
+    display: none;
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-line);
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    align-items: center;
+    gap: 4px;
+    min-height: 44px;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .btn-mobile-menu:hover {
     border-color: var(--text-magenta);
   }
 
@@ -184,9 +326,147 @@
     color: var(--text-magenta);
   }
 
+  /* Mobile Drawer Overlay */
+  .mobile-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    background-color: var(--bg-primary);
+    z-index: 999;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 20px;
+    transform: translateY(-100%);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 2px solid var(--border-magenta);
+    box-sizing: border-box;
+  }
+
+  .mobile-drawer.is-open {
+    transform: translateY(0);
+  }
+
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-line);
+  }
+
+  .drawer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .drawer-sys-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .btn-drawer-close {
+    background-color: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-line);
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-drawer-close:hover {
+    color: var(--text-magenta);
+    border-color: var(--text-magenta);
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: auto 0;
+  }
+
+  .drawer-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    border-bottom: 1px dashed var(--border-line);
+    background-color: transparent;
+    transition: background-color 0.15s ease, padding-left 0.15s ease;
+    min-height: 52px;
+  }
+
+  .drawer-item:hover,
+  .drawer-item:focus {
+    background-color: var(--bg-surface);
+    padding-left: 18px;
+  }
+
+  .drawer-item-left {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+
+  .drawer-num {
+    font-size: 0.85rem;
+  }
+
+  .drawer-label {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .drawer-arrow {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .drawer-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-line);
+    font-size: 0.75rem;
+  }
+
+  .drawer-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
   @media (max-width: 900px) {
+    .container {
+      padding: 0 16px;
+    }
+
     .nav-links, .brand-sub, .hidden-mobile {
-      display: none;
+      display: none !important;
+    }
+
+    .btn-mobile-menu {
+      display: inline-flex;
+    }
+
+    .mobile-drawer {
+      display: flex;
     }
   }
 </style>

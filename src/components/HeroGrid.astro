@@ -212,9 +212,47 @@
       grid-template-columns: 1fr;
     }
 
+    .grid-tile {
+      padding: 40px 24px;
+    }
+
+    .tile-left {
+      padding: 40px 20px;
+    }
+
+    .round-visor-svg {
+      max-width: 280px;
+      max-height: 280px;
+    }
+
     .tile-right {
       border-left: none;
       border-top: none;
+    }
+
+    .giant-headline {
+      font-size: clamp(2.2rem, 8vw, 4.5rem);
+      gap: 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid-tile {
+      padding: 32px 18px;
+    }
+
+    .tile-left {
+      padding: 32px 16px;
+    }
+
+    .round-visor-svg {
+      max-width: 240px;
+      max-height: 240px;
+    }
+
+    .giant-headline {
+      font-size: clamp(1.9rem, 7.5vw, 3rem);
+      gap: 6px;
     }
   }
 </style>

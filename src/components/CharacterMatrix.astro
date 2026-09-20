@@ -512,8 +512,32 @@ const techStack = [
       grid-template-columns: 1fr;
     }
 
+    .grid-tile {
+      padding: 40px 24px;
+    }
+
     .tech-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid-tile {
+      padding: 32px 18px;
+    }
+
+    .spec-item {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tech-cell {
+      padding: 16px 8px;
+    }
+
+    .sena-badge-card,
+    .credly-badge-card {
+      gap: 12px;
     }
   }
 </style>
