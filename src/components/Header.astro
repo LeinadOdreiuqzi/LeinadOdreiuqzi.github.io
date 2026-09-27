@@ -5,8 +5,8 @@
   <div class="container">
     <div class="header-inner">
       <!-- Developer Brand Identity -->
-      <a href="#" class="brand-link" aria-label="Leinad Odreiuqzi - Inicio">
-        <span class="brand-box">LEINAD ODREIUQZI</span>
+      <a href="#" class="brand-link" id="header-brand-trigger" aria-label="Leinad Odreiuqzi - Inicio">
+        <span class="brand-box" id="header-brand-logo">LEINAD ODREIUQZI</span>
         <span class="brand-sub">// SOFTWARE ANALYST & DEVELOPER</span>
       </a>
 
@@ -196,6 +196,73 @@
       mobileMenuBtn?.focus();
     }
   });
+
+  const headerBrandTrigger = document.getElementById('header-brand-trigger');
+  const headerBrandLogo = document.getElementById('header-brand-logo');
+
+  if (headerBrandTrigger && headerBrandLogo) {
+    const originalBrandText = 'LEINAD ODREIUQZI';
+    let frameRequest: number;
+    let isScrambling = false;
+    const chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+
+    const scrambleBrand = () => {
+      if (isScrambling) return;
+      isScrambling = true;
+
+      const queue: Array<{ from: string; to: string; start: number; end: number; char?: string }> = [];
+      const oldText = headerBrandLogo.textContent || '';
+      for (let i = 0; i < originalBrandText.length; i++) {
+        const char = originalBrandText[i];
+        if (char === ' ') {
+          queue.push({ from: ' ', to: ' ', start: 0, end: 0, char: ' ' });
+          continue;
+        }
+        const from = oldText[i] || '';
+        const to = char;
+        const start = i * 2;
+        const end = start + 8;
+        queue.push({ from, to, start, end });
+      }
+
+      cancelAnimationFrame(frameRequest);
+      let frame = 0;
+
+      const update = () => {
+        let output = '';
+        let complete = 0;
+        for (let i = 0; i < queue.length; i++) {
+          const item = queue[i];
+          if (item.to === ' ') {
+            complete++;
+            output += ' ';
+            continue;
+          }
+          if (frame >= item.end) {
+            complete++;
+            output += item.to;
+          } else if (frame >= item.start) {
+            const phase = Math.floor((frame - item.start) / 4);
+            const seed = (i * 5 + phase * 3 + 2) % chars.length;
+            output += chars[seed];
+          } else {
+            output += item.from;
+          }
+        }
+        headerBrandLogo.textContent = output;
+        if (complete === queue.length) {
+          isScrambling = false;
+        } else {
+          frameRequest = requestAnimationFrame(update);
+          frame++;
+        }
+      };
+
+      update();
+    };
+
+    headerBrandTrigger.addEventListener('mouseenter', scrambleBrand);
+  }
 </script>
 
 <style>

@@ -3,9 +3,14 @@
 ---
 
 <section class="hero-grid">
-  <!-- Left Tile: Round Visor Emblem Icon (Magenta Theme) -->
   <div class="grid-tile theme-magenta tile-left">
-    <div class="visor-badge-wrapper">
+    <div
+      class="visor-badge-wrapper"
+      id="visor-badge-trigger"
+      role="button"
+      tabindex="0"
+      aria-label="Emblema Leinad"
+    >
       <div class="visor-icon">
         <svg
           viewBox="0 0 400 400"
@@ -15,34 +20,25 @@
           aria-label="Emblema gráfico esférico con la palabra LEINAD"
         >
           <defs>
-            <!-- Strict Circle Mask for Spherical Perimeter Letter Trimming -->
             <clipPath id="badge-circle-clip">
               <circle cx="200" cy="200" r="180"></circle>
             </clipPath>
 
-            <!-- Spherical Arc Path for Giant Distorted Base Text -->
             <path id="visor-line-3" d="M -70,222 Q 200,432 470,222"></path>
 
-            <!-- Deep Visor Aperture Cutout Shape -->
             <clipPath id="visor-window-clip">
               <path d="M -60,-35 Q 200,115 460,-35 L 460,380 Q 200,555 -60,380 Z"></path>
             </clipPath>
           </defs>
 
-          <!-- Outer Circular Background Badge (Clean matte black) -->
           <circle cx="200" cy="200" r="190" fill="#0D0D0E"></circle>
 
-          <!-- Inner Content STRICTLY Clipped inside Circle Perimeter (Spherical Edge Trimming) -->
           <g clip-path="url(#badge-circle-clip)">
-            <!-- Inner Uniform Matte Black Backdrop -->
             <rect x="0" y="0" width="400" height="400" fill="#0D0D0E"></rect>
 
-            <!-- Visor Curve Cutout Zone -->
             <g clip-path="url(#visor-window-clip)">
-              <!-- Visor Arch Surface -->
               <rect x="0" y="0" width="400" height="400" fill="#0D0D0E"></rect>
 
-              <!-- Single Giant LEINAD Text (Bottom Base - 176px) -->
               <text
                 font-family="var(--font-nucore)"
                 font-weight="900"
@@ -50,9 +46,7 @@
                 fill="#FF5500"
                 letter-spacing="0.14em"
               >
-                <textPath href="#visor-line-3" startOffset="50%" text-anchor="middle">
-                  LEINAD
-                </textPath>
+                <textPath id="visor-curved-text" href="#visor-line-3" startOffset="50%" text-anchor="middle">LEINAD</textPath>
               </text>
             </g>
           </g>
@@ -61,9 +55,7 @@
     </div>
   </div>
 
-  <!-- Right Tile: Full Stack Software Analyst & Developer (Black Theme) -->
   <div class="grid-tile theme-black tile-right">
-    <!-- Top Metadata Block -->
     <div class="tile-meta font-mono">
       <p class="meta-desc">LEINAD ODREIUQZI — SOFTWARE ANALYST & DEVELOPER.</p>
       <p class="meta-sub text-muted">
@@ -80,7 +72,6 @@
       </div>
     </div>
 
-    <!-- Giant Title: FULL STACK SOFTWARE DEVELOPER -->
     <div class="giant-headline font-nucore">
       <div class="line">FULL</div>
       <div class="line">STACK</div>
@@ -89,6 +80,95 @@
     </div>
   </div>
 </section>
+
+<script>
+  class SubtleCipherDecrypter {
+    el: Element;
+    chars: string[];
+    targetText: string;
+    frame: number;
+    frameRequest: number;
+    resolve: () => void;
+
+    constructor(el: Element, targetText: string) {
+      this.el = el;
+      this.targetText = targetText;
+      this.chars = ['0', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+      this.frame = 0;
+      this.frameRequest = 0;
+      this.resolve = () => {};
+      this.update = this.update.bind(this);
+    }
+
+    run(): Promise<void> {
+      const promise = new Promise<void>((resolve) => {
+        this.resolve = () => resolve();
+      });
+      cancelAnimationFrame(this.frameRequest);
+      this.frame = 0;
+      this.update();
+      return promise;
+    }
+
+    update() {
+      let output = '';
+      let complete = 0;
+      const charLifespan = 10;
+      const stagger = 4;
+      const totalChars = this.targetText.length;
+
+      for (let i = 0; i < totalChars; i++) {
+        const start = i * stagger;
+        const end = start + charLifespan;
+
+        if (this.frame < start) {
+          output += this.targetText[i];
+        } else if (this.frame >= end) {
+          complete++;
+          output += this.targetText[i];
+        } else {
+          const phase = Math.floor((this.frame - start) / 5);
+          const charIndex = (i * 7 + phase * 5 + 3) % this.chars.length;
+          output += this.chars[charIndex];
+        }
+      }
+
+      this.el.textContent = output;
+
+      if (complete === totalChars) {
+        this.resolve();
+      } else {
+        this.frameRequest = requestAnimationFrame(this.update);
+        this.frame++;
+      }
+    }
+  }
+
+  const visorTrigger = document.getElementById('visor-badge-trigger');
+  const visorText = document.getElementById('visor-curved-text');
+
+  if (visorTrigger && visorText) {
+    const originalText = 'LEINAD';
+    const decrypter = new SubtleCipherDecrypter(visorText, originalText);
+    let isRunning = false;
+
+    const runAnimation = async () => {
+      if (isRunning) return;
+      isRunning = true;
+      await decrypter.run();
+      isRunning = false;
+    };
+
+    visorTrigger.addEventListener('mouseenter', runAnimation);
+    visorTrigger.addEventListener('click', runAnimation);
+    visorTrigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        runAnimation();
+      }
+    });
+  }
+</script>
 
 <style>
   .hero-grid {
@@ -107,7 +187,6 @@
     overflow: hidden;
   }
 
-  /* Left Tile: Motorcycle Visor Graphic */
   .tile-left {
     background-color: var(--bg-magenta);
     color: var(--text-black);
@@ -124,7 +203,14 @@
     width: 100%;
     max-width: 520px;
     margin: 0 auto;
-    gap: 20px;
+    cursor: pointer;
+    user-select: none;
+    outline: none;
+  }
+
+  .visor-badge-wrapper:focus-visible {
+    outline: 2px dashed #0D0D0E !important;
+    outline-offset: 8px;
   }
 
   .visor-icon {
@@ -138,18 +224,15 @@
     max-width: 360px;
     height: auto;
     max-height: 360px;
-    filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.45));
-    transition:
-      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-      filter 0.35s ease;
+    filter: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .visor-badge-wrapper:hover .round-visor-svg {
-    transform: translateY(-6px) scale(1.04) rotate(3deg);
-    filter: drop-shadow(0 22px 44px rgba(0, 0, 0, 0.55));
+  .visor-badge-wrapper:hover .round-visor-svg,
+  .visor-badge-wrapper:focus-visible .round-visor-svg {
+    transform: scale(1.02);
   }
 
-  /* Right Tile: ESSENTIALLY EVERYWHERE */
   .tile-right {
     background-color: var(--bg-black);
     color: var(--text-white);
@@ -253,6 +336,12 @@
     .giant-headline {
       font-size: clamp(1.9rem, 7.5vw, 3rem);
       gap: 6px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .round-visor-svg {
+      transform: none !important;
     }
   }
 </style>
