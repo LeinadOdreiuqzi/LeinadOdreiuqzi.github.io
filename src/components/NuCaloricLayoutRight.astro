@@ -8,9 +8,9 @@ interface Props {
 }
 
 const {
-  title = "Public Repositories",
+  title = "AstroBrit Platform",
   numeral = "02",
-  serial = "NC-SPECIMEN // ALBUMBEATS & HERBARIO OPEN SOURCE ARCHIVE"
+  serial = "NC-SPECIMEN // ASTROBRIT COMMUNITY WEB",
 } = Astro.props;
 ---
 
@@ -27,53 +27,80 @@ const {
       {numeral}
     </div>
 
-    <!-- Center Content Slot (Replaces the burger object) -->
+    <!-- Center Content Slot -->
     <div class="center-content-area">
       <div class="content-box">
         <slot>
-          <!-- Default Specimen Content Slot -->
+          <!-- Specimen 02: AstroBrit & Open Source Archive -->
           <div class="specimen-badge">
             <span class="badge-tag">[SPECIMEN 02]</span>
-            <span class="badge-title font-nucore">ALBUMBEATS & HERBARIO</span>
+            <span class="badge-title font-nucore">ASTROBRIT // BRITANNIAMC</span
+            >
           </div>
 
           <div class="specimen-grid font-mono">
             <div class="spec-col">
-              <span class="label">MUSIC SHOWCASE</span>
-              <a href="https://github.com/LeinadOdreiuqzi/AlbumBeats" target="_blank" rel="noopener noreferrer" class="value text-magenta spec-link">
+              <span class="label">COMMUNITY PLATFORM</span>
+              <a
+                href="https://astro-brit.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="value text-magenta spec-link"
+              >
+                ASTROBRIT ↗
+              </a>
+            </div>
+            <div class="spec-col">
+              <span class="label">ARCHIVE // BEATS</span>
+              <a
+                href="https://github.com/LeinadOdreiuqzi/AlbumBeats"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="value text-magenta spec-link"
+              >
                 ALBUMBEATS ↗
               </a>
             </div>
             <div class="spec-col">
-              <span class="label">BOTANICAL ARCHIVE</span>
-              <a href="https://github.com/LeinadOdreiuqzi/Herbario" target="_blank" rel="noopener noreferrer" class="value text-magenta spec-link">
+              <span class="label">ARCHIVE // BOTANICAL</span>
+              <a
+                href="https://github.com/LeinadOdreiuqzi/Herbario"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="value text-magenta spec-link"
+              >
                 HERBARIO ↗
               </a>
             </div>
-            <div class="spec-col">
-              <span class="label">LICENSE</span>
-              <span class="value">OPEN SOURCE</span>
-            </div>
           </div>
 
-          <!-- Dynamic AlbumBeats UI Preview Container -->
+          <!-- Dynamic AstroBrit UI Preview Container (Hover to Play GIF / Click to Visit) -->
           <div class="lambdaidx-preview-container">
             <div class="preview-header font-mono">
-              <span class="text-magenta font-bold">// UI SNAPSHOT</span>
-              <span class="text-muted">BEATS SHOWCASE INTERFACE</span>
+              <span class="text-magenta font-bold">// ASTROBRIT</span>
+              <span class="text-muted">BRITANNIAMC TOWNY WEB</span>
             </div>
 
-            <div class="preview-frame">
-              <a href="https://github.com/LeinadOdreiuqzi/AlbumBeats" target="_blank" rel="noopener noreferrer" class="preview-link">
-                <img
-                  src="/albumbeats-preview.png"
-                  alt="AlbumBeats Music Showcase UI Preview"
-                  class="lambdaidx-img"
-                  width="1024"
-                  height="467"
-                  loading="lazy"
-                  decoding="async"
-                />
+            <div class="preview-frame" id="astrobrit-preview-frame">
+              <a
+                href="https://astro-brit.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="preview-link"
+                aria-label="AstroBrit BritanniaMC — Abrir en vivo en una nueva pestaña"
+              >
+                <div class="preview-media-stack">
+                  <img
+                    id="astrobrit-preview-img"
+                    src="/astrobrit-poster.webp"
+                    alt="AstroBrit BritanniaMC 3D Flythrough Showcase"
+                    class="preview-img"
+                    width="960"
+                    height="495"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
               </a>
             </div>
           </div>
@@ -93,29 +120,43 @@ const {
       <div class="logo-mark font-nucore">N02</div>
       <SidebarBarcode />
     </div>
-    
+
     <div class="sidebar-bottom">
       <span class="vertical-text text-sponsored">
-        <svg class="pixel-arrow arrow-right" width="14" height="18" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true">
-          <rect x="7" y="0" width="2" height="18"/>
-          <rect x="7" y="18" width="2" height="2"/>
-          <rect x="5" y="16" width="2" height="2"/>
-          <rect x="9" y="16" width="2" height="2"/>
-          <rect x="3" y="14" width="2" height="2"/>
-          <rect x="11" y="14" width="2" height="2"/>
-          <rect x="1" y="12" width="2" height="2"/>
-          <rect x="13" y="12" width="2" height="2"/>
+        <svg
+          class="pixel-arrow arrow-right"
+          width="14"
+          height="18"
+          viewBox="0 0 16 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <rect x="7" y="0" width="2" height="18"></rect>
+          <rect x="7" y="18" width="2" height="2"></rect>
+          <rect x="5" y="16" width="2" height="2"></rect>
+          <rect x="9" y="16" width="2" height="2"></rect>
+          <rect x="3" y="14" width="2" height="2"></rect>
+          <rect x="11" y="14" width="2" height="2"></rect>
+          <rect x="1" y="12" width="2" height="2"></rect>
+          <rect x="13" y="12" width="2" height="2"></rect>
         </svg>
         Sponsored message
-        <svg class="pixel-arrow arrow-right" width="14" height="18" viewBox="0 0 16 20" fill="currentColor" aria-hidden="true">
-          <rect x="7" y="0" width="2" height="18"/>
-          <rect x="7" y="18" width="2" height="2"/>
-          <rect x="5" y="16" width="2" height="2"/>
-          <rect x="9" y="16" width="2" height="2"/>
-          <rect x="3" y="14" width="2" height="2"/>
-          <rect x="11" y="14" width="2" height="2"/>
-          <rect x="1" y="12" width="2" height="2"/>
-          <rect x="13" y="12" width="2" height="2"/>
+        <svg
+          class="pixel-arrow arrow-right"
+          width="14"
+          height="18"
+          viewBox="0 0 16 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <rect x="7" y="0" width="2" height="18"></rect>
+          <rect x="7" y="18" width="2" height="2"></rect>
+          <rect x="5" y="16" width="2" height="2"></rect>
+          <rect x="9" y="16" width="2" height="2"></rect>
+          <rect x="3" y="14" width="2" height="2"></rect>
+          <rect x="11" y="14" width="2" height="2"></rect>
+          <rect x="1" y="12" width="2" height="2"></rect>
+          <rect x="13" y="12" width="2" height="2"></rect>
         </svg>
       </span>
     </div>
@@ -147,7 +188,8 @@ const {
     border-left: none;
   }
 
-  .sidebar-top, .sidebar-bottom {
+  .sidebar-top,
+  .sidebar-bottom {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -197,10 +239,18 @@ const {
     transition: transform 0.15s ease;
   }
 
-  .pixel-arrow.arrow-down  { transform: rotate(0deg); }
-  .pixel-arrow.arrow-up    { transform: rotate(180deg); }
-  .pixel-arrow.arrow-left  { transform: rotate(90deg); }
-  .pixel-arrow.arrow-right { transform: rotate(-90deg); }
+  .pixel-arrow.arrow-down {
+    transform: rotate(0deg);
+  }
+  .pixel-arrow.arrow-up {
+    transform: rotate(180deg);
+  }
+  .pixel-arrow.arrow-left {
+    transform: rotate(90deg);
+  }
+  .pixel-arrow.arrow-right {
+    transform: rotate(-90deg);
+  }
 
   /* Main Specimen Panel (Left Side) */
   .specimen-main {
@@ -319,7 +369,7 @@ const {
     text-decoration: underline;
   }
 
-  /* Dynamic AlbumBeats Preview Frame */
+  /* Dynamic AstroBrit Preview Frame (Hover-to-Play GIF) */
   .lambdaidx-preview-container {
     display: flex;
     flex-direction: column;
@@ -332,7 +382,10 @@ const {
   .preview-header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 0.75rem;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .preview-frame {
@@ -340,20 +393,42 @@ const {
     overflow: hidden;
     border: 1px solid var(--border-line);
     background-color: var(--bg-black);
+    position: relative;
+    transition: border-color 0.2s ease;
+  }
+
+  .preview-frame:hover,
+  .preview-frame:focus-within {
+    border-color: var(--color-magenta);
   }
 
   .preview-link {
     display: block;
     width: 100%;
     text-decoration: none;
+    outline: none;
+    cursor: pointer;
   }
 
-  .lambdaidx-img {
+  .preview-link:focus-visible {
+    outline: 2px dashed var(--color-magenta);
+    outline-offset: 2px;
+  }
+
+  .preview-media-stack {
+    position: relative;
     width: 100%;
-    height: auto;
-    display: block;
+    aspect-ratio: 960 / 495;
+    background-color: #080808;
+    overflow: hidden;
+  }
+
+  .preview-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    aspect-ratio: 1024 / 467;
+    display: block;
+    transition: filter 0.2s ease;
   }
 
   /* Footer Monospace Serial (Left Aligned) */
@@ -475,3 +550,33 @@ const {
     }
   }
 </style>
+
+<script>
+  const frame = document.getElementById("astrobrit-preview-frame");
+  const img = document.getElementById(
+    "astrobrit-preview-img",
+  ) as HTMLImageElement | null;
+  const staticSrc = "/astrobrit-poster.webp";
+  const animSrc = "/astrobrit-preview.webp";
+
+  if (frame && img) {
+    const preload = new Image();
+    preload.src = animSrc;
+
+    frame.addEventListener("mouseenter", () => {
+      img.src = animSrc;
+    });
+
+    frame.addEventListener("mouseleave", () => {
+      img.src = staticSrc;
+    });
+
+    frame.addEventListener("focusin", () => {
+      img.src = animSrc;
+    });
+
+    frame.addEventListener("focusout", () => {
+      img.src = staticSrc;
+    });
+  }
+</script>
